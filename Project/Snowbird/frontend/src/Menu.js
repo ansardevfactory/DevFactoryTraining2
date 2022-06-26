@@ -1,19 +1,19 @@
 import "./style/styles.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { CgBoard } from "react-icons/cg";
 import {
-  FaAtlassian,
-  FaBtc,
-  FaCodepen,
-  FaFirefoxBrowser,
-  FaFacebookMessenger,
-  FaEdge,
-  FaFortAwesomeAlt,
-  FaHackerNewsSquare,
-  FaInstagramSquare,
+  FaProjectDiagram,
+  FaBolt,
+  FaCheck,
+  FaRunning,
+  FaUser,
+  FaCalendarCheck,
+  FaScroll,
   FaPiedPiperSquare,
-  FaUserCircle
+  FaUserCircle,
 } from "react-icons/fa";
+import { VscGraph } from "react-icons/vsc"
 function Menu() {
   var navigate = useNavigate();
   const [select, setSelect] = useState(false);
@@ -64,68 +64,55 @@ function Menu() {
   }
   return (
     <>
-      <div className="firstrow">
-        <div className="logodiv" onClick={(e)=>navigate("/dash")}>
-          <FaPiedPiperSquare /><label>Snow bird</label>
-        </div>
-        <div className="usericon">
-          <FaUserCircle className="usericon_icon" />
-          <label></label>
-          <div className="popup">
-            <label>Logout</label>
-          </div>
-        </div>
-      </div>
-      <div className="firstcolumn">
-        <nav>
-          <li onClick={board}>
-            <FaAtlassian  className="menu_icon"/>
-            Board
+      <nav>
+        <li onClick={board}>
+          {" "}
+          <div className="menu_icon_label"><CgBoard className="menu_iconcg" />
+          Board</div>
+        </li>
+        <li ><div className="menu_icon_label">
+          <FaProjectDiagram className="menu_icon" /> 
+          Projects</div>
+        </li>
+        
+        <li onClick={epic}><div className="menu_icon_label">
+          <FaBolt className="menu_icon" />
+          Epics</div>
+        </li>
+        <li onClick={task}><div className="menu_icon_label">
+          <FaCheck className="menu_icon" />
+          Tasks</div>
+        </li>
+        <li onClick={sprint}><div className="menu_icon_label">
+          <FaRunning className="menu_icon" />
+          Sprints</div>
+        </li>
+        <li onClick={users}><div className="menu_icon_label">
+          <FaUser className="menu_icon" />
+          Users</div>
+        </li>
+        <li onClick={attendance}><div className="menu_icon_label">
+          <FaCalendarCheck className="menu_icon" />
+          Attendance</div>
+        </li>
+        <li onClick={sprintboard}><div className="menu_icon_label">
+          <FaScroll className="menu_icon" />
+          Scrum Board</div>
+        </li>
+        <li onClick={showlist}><div className="menu_icon_label">
+          <VscGraph className="menu_icon" />
+          Report</div>
+        </li>
+        <ul className="dropdown">
+          <li
+            onClick={report}
+            className={select ? "show" : "hide"}
+            id="timesheet"
+          ><div className="menu_icon_label">
+            TimeSheet</div>
           </li>
-          <li onClick={project}>
-            <FaBtc  className="menu_icon"/>
-            Projects
-          </li>
-          <li onClick={epic}>
-            <FaCodepen  className="menu_icon"/>
-            Epics
-          </li>
-          <li onClick={task}>
-            <FaFirefoxBrowser  className="menu_icon"/>
-            Tasks
-          </li>
-          <li onClick={sprint}>
-            <FaFacebookMessenger  className="menu_icon"/>
-            Sprints
-          </li>
-          <li onClick={users}>
-            <FaEdge  className="menu_icon"/>
-            Users
-          </li>
-          <li onClick={attendance}>
-            <FaFortAwesomeAlt  className="menu_icon"/>
-            Attendance
-          </li>
-          <li onClick={sprintboard}>
-            <FaHackerNewsSquare  className="menu_icon"/>
-            Sprint Board
-          </li>
-          <li onClick={showlist}>
-            <FaInstagramSquare className="menu_icon"/>
-            Report
-          </li>
-          <ul className="dropdown">
-            <li
-              onClick={report}
-              className={select ? "show" : "hide"}
-              id="timesheet"
-            >
-              TimeSheet
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </>
+        </ul>
+      </nav> </>
   );
 }
 export default Menu;

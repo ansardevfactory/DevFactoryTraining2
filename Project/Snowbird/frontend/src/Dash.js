@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Singleuser from "./Singleuser";
 import "./style/styles.css";
+// import a1 from "./images/a1.png";
 import Menu from "./Menu";
+import Header from "./Header";
+import {FaFlag}  from "react-icons/fa";
 import Moment from "moment";
+import { FaSearch } from "react-icons/fa";
 function Dash() {
   var navigate = useNavigate();
   const [array, setArray] = useState([]);
@@ -19,6 +23,7 @@ function Dash() {
   const [status, setStatus] = useState("");
   const [taskid, setTaskid] = useState("");
   const [time, setTime] = useState("");
+  const[uid,setUId]=useState("");
   var temp;
   useEffect(() => {
     var url =
@@ -32,7 +37,7 @@ function Dash() {
           element.isSelected = true;
           setArray(res.data);
         }
-        console.log("array" + JSON.stringify(array));
+        console.log("array" + JSON.stringify(res.data));
       })
       .catch();
   }, []);
@@ -55,9 +60,10 @@ function Dash() {
     setSecondArray([]);
     setThirdArray([]);
     setFourthArray([]);
-    var url = "https://zrz50ev48l.execute-api.us-west-2.amazonaws.com/usertaskfetch";
+    var url =
+      "https://zrz50ev48l.execute-api.us-west-2.amazonaws.com/usertaskfetch";
     var header = {};
-    var request = '{ "userId": "'+id+'" }';
+    var request = '{ "userId": "' + uid + '" }';
     console.log("req" + JSON.stringify(request));
     axios
       .post(url, request, header)
@@ -255,31 +261,62 @@ function Dash() {
   return (
     <div>
       <div className="outer">
+        {/* Side navigation menu */}
+
+        {<Header />}
+        {/* Main outline */}
         <div className="secondrow">
-          {/* Side navigation menu */}
-
-          {<Menu />}
-
-          {/* Main outline */}
+          <div className="firstcolumn">
+            <Menu />
+          </div>
           <div className="secondcolumn">
-            <div className="listcontainer">
-              <div className="usernamerow">
+            <div className="secondcolumn_row1">
+              <label>Projects/</label>
+            </div>
+            <div className="secondcolumn_row2">
+              <label className="test_sprint">TEST Sprint1</label>
+            </div>
+            <div className="secondcolumn_row3">
+              <select onChange={(e)=>{setUId(e.target.value)}} >
+              <option>--Select--</option>
+                {array.map((item,index)=>{
+                
+                  return<>
+                    
+                  <option value={item.id}>{item.txtUserName}</option>
+                  {/* <option>Anjaly</option>
+                <option>Sushmitha</option>
+                <option>Dony</option>
+                <option>Anitha</option> */}
+                  </>
+                })}
+                
+              </select>
+              {/* <div className="secondcolumn_search">
+                <input type="text" className="secondcolumn_row3_text" />
+                <FaSearch className="fasearch" />
+              </div> */}
+            </div>
+            {/* <div className="listcontainer"> */}
+            {/* <div className="usernamerow">
+              <div className="label_project"> <label >Project/</label>
+              </div>
                 {array.map((item, index) => {
                   return (
-                    <>
-                      {
+                    <> */}
+
+            {/* {
                         <Singleuser
                           items={item}
                           index={index}
                           getUid={tasklist}
                           SingleUserClick={SingleUserClick}
                         />
-                      }
-                    </>
+                      } */}
+            {/* </>
                   );
                 })}
-              </div>
-            </div>
+              </div> */}
 
             {/* Task status name */}
             {/* <div className="statusnamerow">
@@ -288,101 +325,96 @@ function Dash() {
               <label>Review</label>
               <label>Complete</label>
             </div> */}
-            <div className="taskbars">
-              <div className="taskbar_1">
-                <div className="lab">
-                  {" "}
-                  <label>ToDo</label>
-                </div>
+            <div className="secondcolumn_row4">
+              <div className="taskbars">
                 <div
                   className="taskbar1"
                   onDragOver={(e) => allowDrop(e)}
                   onDrop={(e) => handleDrop(e)}
                 >
+                  <label className="taskbar_label">TO DO</label>
+                  <div className="taskbars_task">
+                  <  FaFlag className="flag"/>
+                   <label>Task1</label>
+                   
+                  </div>
                   {firstArray.map((item, index) => {
                     return (
                       <>
                         <p
-                          draggable="true"  
+                          draggable="true"
                           onDragStart={(e) =>
                             handleDrag(e, index, "taskbar1", item)
                           }
                         >
-                          <p  className="draggablep">{item.txtTitle}</p>
+                          <p className="draggablep">{item.txtTitle}</p>
                         </p>
                       </>
                     );
                   })}
                 </div>
-              </div>
-              <div className="taskbar_2">
-                <div className="lab">
-                  <label>InProgress</label>
-                </div>
+
                 <div
                   className="taskbar2"
                   onDragOver={(e) => allowDrop(e)}
                   onDrop={(e) => handleDrop(e)}
                 >
+                  {" "}
+                  <label className="taskbar_label">IN PROGRESS</label>
                   {/* {JSON.stringify(secondArray)} */}
                   {secondArray.map((item, index) => {
                     return (
                       <>
                         <p
-                          draggable="true"  
+                          draggable="true"
                           onDragStart={(e) =>
                             handleDrag(e, index, "taskbar2", item)
                           }
                         >
-                          <p  className="draggablep">{item.txtTitle}</p>
+                          <p className="draggablep">{item.txtTitle}</p>
                         </p>
                       </>
                     );
                   })}
                 </div>
-              </div>
-              <div className="taskbar_3">
-                <div className="lab">
-                  <label>OnReview</label>
-                </div>
+
                 <div
                   className="taskbar3"
                   onDragOver={(e) => allowDrop(e)}
                   onDrop={(e) => handleDrop(e)}
                 >
+                  <label className="taskbar_label">ON REVIEW</label>
                   {/* {JSON.stringify(thirdArray)} */}
                   {thirdArray.map((item, index) => {
                     return (
                       <>
                         <p
-                          draggable="true"  
+                          draggable="true"
                           onDragStart={(e) =>
                             handleDrag(e, index, "taskbar3", item)
                           }
                         >
-                          <p  className="draggablep">{item.txtTitle}</p>
+                          <p className="draggablep">{item.txtTitle}</p>
                         </p>
                       </>
                     );
                   })}
                 </div>
-              </div>
-              <div className="taskbar_4">
-                <div className="lab">
-                  <label>Completed</label>
-                </div>
+
                 <div
-                  className="taskbar4" 
+                  className="taskbar4"
                   onDragOver={(e) => allowDrop(e)}
                   onDrop={(e) => handleDrop(e)}
                 >
+                  {" "}
+                  <label className="taskbar_label">COMPLETED</label>
                   {/* {JSON.stringify(fourthArray)} */}
                   {fourthArray.map((item, index) => {
                     return (
                       <>
                         <p
-                          draggable="true" 
-                          onDragStart={(e) => 
+                          draggable="true"
+                          onDragStart={(e) =>
                             handleDrag(e, index, "taskbar4", item)
                           }
                         >

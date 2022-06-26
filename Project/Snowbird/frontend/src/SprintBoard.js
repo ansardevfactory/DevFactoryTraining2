@@ -1,55 +1,151 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Menu from "./Menu";
+import Header from "./Header";
 import SprintBox from "./SprintBox";
-function SprintBoard(){
-    const [sprintlist,setSprintList]=useState([]);
-    const[state,setState]=useState("");
-    useEffect(()=>{
-        
-        var req={};
-        var header={};
-        var url="http://localhost:8000/sprintfetch";
+import { FaAngleDown, FaFlag, FaPlus, FaRegUserCircle, FaUser, FaUserCircle } from "react-icons/fa";
+import { BsThreeDots } from "react-icons/bs";
+function SprintBoard() {
+  const [sprintlist, setSprintList] = useState([]);
+  const [state, setState] = useState("");
+  const [select,setSelect]=useState("");
+  useEffect(() => {
+    var req = {};
+    var header = {};
+    var url = "http://localhost:8000/sprintfetch";
 
-        axios.post(url,req,header).then((res)=>{
-            console.log(JSON.stringify(res.data));
-            setSprintList(res.data);
-        }).catch();
-    },[])
-    const checkChange=()=>{
-        setState("checked");
-
+    axios
+      .post(url, req, header)
+      .then((res) => {
+        console.log(JSON.stringify(res.data));
+        setSprintList(res.data);
+      })
+      .catch();
+      
+  }, []);
+  function selectstyle(){
+    if(select=="todo")
+    {
+      
     }
-    return<>
-    <div className="outer">
+  }
+  const checkChange = () => {
+    setState("checked");
+  };
+  function showlist()
+  {
+
+  }
+  return (
+    <>
+      <div className="outer">
+        {<Header />}
         <div className="secondrow">
-          {/* Side navigation menu */}
-          {<Menu />}
-          {/* Main outline */}
+          <div className="firstcolumn">
+            <Menu />
+          </div>
           <div className="secondcolumn">
-          <div className="toggle"> <label>Show Active Only</label>
-             </div>
-          <div className="togglerow">
-         
-          <label class="switch">
-         
-                    <input type="checkbox" onClick={(e)=>checkChange(e)} value={state} />
-                    <span class="slider round"></span>
-                </label>
+            <div className="secondcolumn_row1">
+              <label>Projects/</label>
+            </div>
+            <div className="secondcolumn_row2">
+              <label className="test_sprint">Backlog</label>
+            </div>
+            <div className="secondcolumn_row3">
+              <select>
+                <option>--Select--</option>
+                <option>Sprint 1</option>
+                <option>Sprint 2</option>
+              </select>
+              {/* <div className="secondcolumn_search">
+                <input type="text" className="secondcolumn_row3_text" />
+                <FaSearch className="fasearch" />
+              </div> */}
+            </div>
+            <div className="sprint_secondcolumn_row4" onClick={showlist}>
+              <div className="sprintcolumnrow4_top">
+                <div className="sprintcolumnrow4_top_right">
+                  <FaAngleDown />
+                  <label className="sprintcolumnrow4_top_main_label">
+                    TEST 1 Sprint 1
+                  </label>{" "}
+                </div>
+                <div className="sprintcolumnrow4_top_left">
+                  <button>Complete Sprint</button>
+                  <BsThreeDots className="threedots" />
+                </div>
               </div>
+              <div className="sprintcolumnrow4_sprintlist">
+               <div className="list">
+                <div className="sprintcolumnrow4_top_list_left">
+                <FaFlag className="flag"/> <label className="sprintcolumnrow4_top_list_label">Test-1 BoardPage</label>
+                <label className="testepic">TestEpic</label> </div>
+                <div className="sprintcolumnrow4_top_list_right">
+                <select className="select_sprintlist">
+                    <option>TO-DO</option>
+                </select>
+                <FaUserCircle className="user_select"/>
+                </div>
+                </div>
+                {/* tet */}
+                <div className="list">
+                <div className="sprintcolumnrow4_top_list_left">
+                <FaFlag className="flag"/> <label className="sprintcolumnrow4_top_list_label">Test-2 Scrumboard</label>
+                <label className="testepic">TestEpic</label> </div>
+                <div className="sprintcolumnrow4_top_list_right">
+                <select 
+                
+                 onChange={(e)=>{setSelect(e.target.value)}} className="select_sprintlist">
+                    <option value={"todo"}>TO-DO</option>
+                    <option className="green" value={"done"}>DONE</option>
+                </select>
+                <FaUserCircle className="user_select"/>
+                </div>
+                </div>
+                
+           
+                       
+              </div>
+                <div className="sprint_secondcolumn_row4_createnew">
+                   <FaPlus  className="craetenew_icon"/><label>Create issue</label>
+                </div>
+              
+              {/* <div className="sprintcolumnrow4_sub"><FaFlag className="flag"/>
+                    <label className="sprintcolumnrow4_sub_label">Test-5</label>
+                    </div>   */}
+            </div>
+            <div className="sprint_secondcolumn_row5">
+            <div className="sprint_secondcolumn_row5_left" > 
+            <FaAngleDown className="angledown"/><label>Backlog</label>
+            <label className="row5_label">(0 issues)</label>
+            </div>
+            <div className="sprint_secondcolumn_row5_right">
+              <div className="backlog_right">
+            <div className="dot">3</div>
+            <button > Create Sprint</button>
+            </div>
+            </div>
+              
+                {/* <div className="sprint_secondcolumn_row5_left" >
+                    <FaAngleDown className="angledown"/><label>Backlog</label>
+                    <label className="row5_label">(0 issues)</label>
+                </div>
+                <div className= "sprint_secondcolumn_row5_right" >
+                    <div className="dot"></div>
+                    <button > Create Sprint</button>
+                </div> */}
+                
+                </div>
+                <div className= "sprint_secondcolumn_row6">
+                  <label>Your backlog is empty</label>
+                 </div>
+                 <div className= "sprint_secondcolumn_row7">
+                 <FaPlus  className="craetenew_icon"/><label>Create issue</label>
+                 </div>
                  
-            
-     
-        <div className="sprint_box">
-        {sprintlist.map((item,index)=>{
-            return<>
-            {item.refSprintid==1}
-             {<SprintBox index={item.refSprintid}/>}
-            </>
-            
-        })}
-        </div>
-        <div className="task_row">
+           
+
+            {/* <div className="task_row">
             <h3 style={{color:"gray"}}>Tasks</h3>
             <table>
             <thead>
@@ -75,19 +171,13 @@ function SprintBoard(){
                     <td>Project Management</td>
                 </tr>
             </tbody>
-            </table>
-            <div className="pbutton">
-                            <button>1</button>
-                            <button>2</button>
-                            <button>3</button>
-                        </div>
-        </div>
-          
-        </div>
+            </table> */}
+            
           </div>
-          </div>
-
+        </div>
+      </div>
+      {/* </div> */}
     </>
+  );
 }
 export default SprintBoard;
-
