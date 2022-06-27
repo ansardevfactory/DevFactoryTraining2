@@ -760,11 +760,19 @@ input:checked + .slider:before {
   color: white;
 }
 .report_secrow {
-  /* text-align: center; */
-  padding-left: 30%;
-  color: grey;
+  width:130%;
+  margin-top:2%;
+  font-weight: bold;
+  border-bottom:1px solid rgb(222, 218, 218);
+  padding-left:3%;
+  padding-bottom:1%;
+  display: flex;
+  box-shadow: 1px 1px 1px rgb(255, 250, 250);
 }
-
+.timesheet_icons
+{
+  margin-left:10%;
+}
 .report_secrow #FaDownload {
   float: left;
 }
@@ -1330,7 +1338,7 @@ border-radius: 3%;
 }
 .sprintcolumnrow4_top_left button{
    background-color:#E2E4E9;
-   margin-left:50px;
+   margin-left:2px;
    border:none;
   
 }
@@ -1342,8 +1350,9 @@ border-radius: 3%;
 }
 .threedots
 {
-  border:1px solid black;
+  border:1px solid lightgray;
   margin-left:4px;
+  /* padding:2%; */
   background-color: #E2E4E9;
 }
 .sprint_secondcolumn_row4_createnew
@@ -1369,7 +1378,7 @@ border-radius: 3%;
   display: flex;
   flex-direction: column;
   width:90%;
-  margin-bottom:2%;
+  /* margin-bottom:2%; */
 }
 .sprintcolumnrow4_top_list
 {
@@ -1517,4 +1526,95 @@ border-radius: 3%;
   /* background-color: #6AAB18; */
   margin-left:60%;
   display: flex;
+}
+.report_secrow_left
+{
+  /* background-color: #56A0FE; */
+  width:60%;
+}
+.report_secrow_right
+{
+  width:40%;
+  /* background-color: #6AAB18; */
+}
+.timesheet_filters
+{
+  
+    width:130%;
+    margin-top:.7%;
+    font-weight: bold;
+    border-bottom:1px solid rgb(222, 218, 218);
+    padding-left:3%;
+    /* padding-bottom:1%; */
+    display: flex;
+    box-shadow: 1px 1px 1px rgb(255, 250, 250);
+    font-size: .9rem;
+    
+  
+}
+.timesheet_filter_label
+{
+  margin-right:5%;
+}
+.timesheet_select
+{
+  margin-right:5%;
+  margin-bottom: 1%;
+}
+.timesheet_users_label
+{
+  margin-right:1%;
+}
+            
+/* .date_fromdate
+{
+  
+  display: flex;
+  flex-direction: row;
+} */
+.date
+{
+  display: flex;
+  flex-direction: row;
+  margin-right:4%;
+}
+.date label{
+  width:41%;
+  /* color:red; */
+}
+.timesheet_row3{
+  
+  width:110%;
+  /* background-color: #56A0FE; */
+  /* margin-top:2%; */
+  margin-left: 4%;
+ 
+  
+}
+.timesheet_row3 th{
+  font-size:1rem;
+  
+}
+.timesheet_task 
+{
+  border-right:10%;
+}
+.timesheet_actual
+{
+  padding-right:10%;
+}
+#report tr:nth-child(even){background-color: #dfecfa;}
+
+.mainheading
+{
+  background-color: #62A7FF;
+}
+.badge
+{
+  color:green;
+ 
+}
+.mainheading th,td{
+  /* font-size: small; */
+  font-weight: lighter;
 }
