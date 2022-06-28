@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+  .row1 {
+    display: flex;
+    padding: 30px 5%;
+  }
+  .left {
+    width: 50%;
+  }
+  .left label {
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.688);
+  }
+  .right {
+    width: 50%;
+    text-align: right;
+  }
+  .right button {
+    color: white;
+    background-color: blue;
+    border: none;
+    font-weight: 550;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    padding: 10px;
+  }
+  /**************end of row1**************/
+  .row2 {
+    display: flex;
+    padding: 0 5%;
+  }
+  .searchdiv {
+    border: 1px solid rgba(0, 0, 0, 0.268);
+    margin-right: 10px;
+    display: flex;
+    border-radius: 3px;
+    align-items: center;
+  }
+  .searchdiv input {
+    border: none;
+    outline: none;
+    padding: 10px;
+  }
+  .icon {
+    color: rgba(0, 0, 0, 0.592);
+    margin-right: 5px;
+  }
+  .row3 {
+    padding: 0 5%;
+  }
+  .row3 table {
+    width: 100%;
+    border-collapse: collapse;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.21);
+  }
+  .row3 th {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.21);
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.64);
+    font-size: 0.85rem;
+    text-align: left;
+  }
+  
+  .rowflex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .row3 td {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.64);
+    font-size: 0.9rem;
+  }
+  .circle {
+    background-color: rgb(254, 55, 0);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 2px;
+    color: white;
+    margin-right: 10px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header{
+      background-color: blueviolet;
+      width: 100%;
+      height: 50px;
+  }
+  .menurow{
+      display: flex;
+  }
+  .col1{
+      width:15%;
+      background-color: brown;
+      height: 100vh;
+  }
+  .col2{
+      width: 85%;
+  }

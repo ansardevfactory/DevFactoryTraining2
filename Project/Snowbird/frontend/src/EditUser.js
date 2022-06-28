@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Menu from "./Menu";
+
 import "./style/styles.css";
+import Menu from './Menu';
+import Header from "./Header";
+import {FiMail} from "react-icons/fi";
+import {CgAsterisk} from "react-icons/cg";
 function EditUser() {
   var id=localStorage.getItem("id");
   const[uid,setId]=useState("");
@@ -78,63 +82,52 @@ function EditUser() {
   }
   return (
     <div>
-      <div className="outer">
+       <div className="outer">
         {/* USer name with icon */}
         {/* <div className="firstrow">
-          <div className="usericon"></div>
+          <div className="usericon"> </div>
           <label>User</label>
         </div> */}
-
+        {<Header />}
         <div className="secondrow">
           {/* Side navigation menu */}
-          {<Menu/>}
+
+          <div className="firstcolumn">
+            <Menu />
+          </div>
           <div className="secondcolumn">
+            {/* <div className="prowfirst">
+              <FiMail className="prowfirst_mail"/>
+            </div> */}
             <div className="prowone">
-              <label>Edit User</label>
-              <button onClick={edituser}>SAVE</button>
+              <div className="prowone_left">
+              <label>Edit User</label></div>
+              {/* <div className="prowone_right">
+              <button onClick={adduser} >SAVE</button></div> */}
             </div>
 
 
             <div className="psecondrow">
-              <div className="titlerow">
-                <label>User Name</label>
-                <br></br>
-               <input type="text" value={uname} onChange={(e)=>{setUname(e.target.value)}}></input>
-              </div>
-
-              <div className="titlerow">
-                <label>Password</label><br></br>
-                  <input type="password" value={pw} onChange={(e)=>{setPw(e.target.value)}}/>
+              <div className="titlerow1">
+                <div className="titlerow1_label"> <label >User Name  </label></div>
+                <CgAsterisk className="asterik"/><div className="titlerow1_input"> <input type="text" onChange={(e)=>{setUname(e.target.value)}}/></div>
                  
               </div>
-              <div className="typerow">
-                <label>Role</label>
-                <br></br>
-                
-                <select  value={role}  onChange={(e)=>{setRole(e.target.value)}}>
-                    {uarray.map((uitem,uindex)=>{
 
-                        return<>
-                         
-                         <option value={uitem.id}>{uitem.txtUserRole}</option>
-                       
-                           </>
-                       
-                      })}
-                      </select>
-                     
-                      
-                   
-
-           
-                
-                   
-                  
-                  {/* <option>Employee</option>
-                  <option>Manager</option> */}
+              <div className="titlerow2">
+                <div className="titlerow2_label"> <label >Password   </label></div>
+                <CgAsterisk className="asterik"/><div className="titlerow2_input"><input type="text" /></div>
                 
               </div>
 
+              <div className="titlerow3">
+                <div className="titlerow3_label"> <label >Role   </label></div>
+                <CgAsterisk className="asterik"/><div className="titlerow3_input"><select><option>Employee</option></select></div>
+                
+              </div>
+              <div className="titlerow4">
+                <button className="titlerow4_button">Save</button>
+              </div>
               </div>
             
               </div>

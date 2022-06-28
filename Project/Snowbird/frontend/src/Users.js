@@ -3,7 +3,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style/styles.css';
 import Menu from './Menu';
-  
+import Header from "./Header";
+import m from './images/manager.png';
+import { FaSearch, FaStar, FaUser } from 'react-icons/fa';
+import {TiUser} from 'react-icons/ti';
+import {BsEmojiSmile,BsEmojiSmileFill,BsThreeDots} from 'react-icons/bs'
+
 function Users() {
     const [array,setArray]=useState([]);
     const navigate=useNavigate();
@@ -41,17 +46,57 @@ function newuser()
           <div className="usericon"></div>
           <label>User</label>
         </div> */}
+
+{<Header />}
         <div className="secondrow">
           {/* Side navigation menu */}
           
-          {<Menu/>}
+          <div className="firstcolumn">
+            <Menu />
+          </div>
           <div className="secondcolumn">
           <div className="prowone">
-              <label>User List</label>
-              <button onClick={newuser}>New User</button>
+            <div className="prowone_left"><label>User List</label></div>
+             <div className="prowone_right"> <button onClick={newuser}>New User</button></div> 
+             
             </div>
             <div className='secthirdrow'>
-              <table>
+               <div className="search_user">
+               <input type="text" />
+               <FaSearch/>
+               </div>
+               </div>
+
+               <div className="userlist">
+               
+                <table>
+                  <tr>
+                  <th><TiUser className='active'/></th>
+                    
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"/></td>
+                    <td>1</td>
+                    <td>Anajaly</td>
+                    <td>Employee</td>
+                    <td><BsThreeDots onClick={edituser} className='threedots_user' /></td>
+                  </tr>
+                  <tr>
+                  <td><input type="checkbox"/></td>
+                    <td>2</td>
+                    <td>Hari</td>
+                    <td>Employee</td>
+                    <td><BsThreeDots  onClick={edituser} className='threedots_user'/></td>
+                  </tr>
+                </table>
+
+
+
+               </div>
+              {/* <table>
                 <thead>
                   <th> Id</th>
                   <th> Users</th>
@@ -73,10 +118,10 @@ function newuser()
                     })}
                      
                     </tbody>
-              </table>
-            </div>
+              </table> */}
+           
           </div>
-          <div className="pages">
+          {/* <div className="pages">
             <button>-</button>
             <button>1</button>
             <button>2</button>
@@ -84,7 +129,7 @@ function newuser()
             <button>...</button>
             <button>10</button>
             <button>+</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

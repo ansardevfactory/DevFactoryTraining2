@@ -22,6 +22,7 @@ import AddEpic from "./AddEpic";
 import EditTask from "./EditTask";
 import LoginPage from "./LoginPage";
 import Sprint from "./Sprint";
+import JiraList from "./JiraList";
 // import Attendance1 from "./Attendance1";
 
 function Navigation() {
@@ -60,6 +61,7 @@ function Navigation() {
           <Route path="/addepic" element={<AddEpic/>}></Route>
           <Route path="/edittask" element={<EditTask/>}></Route>
           <Route path="/sprint" element={<Sprint/>}></Route>
+          <Route path="/jiralist" element={<JiraList/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

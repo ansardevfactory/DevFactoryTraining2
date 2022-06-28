@@ -15,6 +15,7 @@ function Report() {
   const [user, setUser] = useState([]);
   const [uid, setUid] = useState("");
   const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   useEffect(() => {
     var url_u = "http://localhost:8000/userfetch";
     var request = {};
@@ -76,17 +77,21 @@ function Report() {
               </select>
               <div className="date">
                 <label>From Date</label>
-                <DatePicker
+                <input type="date" className="fromdate_input" selected={startDate}
+                  onChange={(date) => setStartDate(date)}/>
+                {/* <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
-                />
+                /> */}
               </div>
               <div className="date">
                 <label className="date_label">To Date</label>
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                />
+                <input type="date" className="fromdate_input"selected={endDate}
+                  onChange={(date) => setEndDate(date)}/>
+                {/* <DatePicker
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                /> */}
               </div>
               </div>
               <div className="timesheet_row3">

@@ -7,7 +7,7 @@ import "./style/styles.css";
 // import a1 from "./images/a1.png";
 import Menu from "./Menu";
 import Header from "./Header";
-import {FaFlag}  from "react-icons/fa";
+import { FaFlag } from "react-icons/fa";
 import Moment from "moment";
 import { FaSearch } from "react-icons/fa";
 function Dash() {
@@ -23,7 +23,7 @@ function Dash() {
   const [status, setStatus] = useState("");
   const [taskid, setTaskid] = useState("");
   const [time, setTime] = useState("");
-  const[uid,setUId]=useState("");
+  const [uid, setUId] = useState("");
   var temp;
   useEffect(() => {
     var url =
@@ -42,17 +42,17 @@ function Dash() {
       .catch();
   }, []);
 
-  const SingleUserClick = (indx) => {
-    // alert(indx)
-    const temp = [...array];
-    for (const element of temp) {
-      element.isSelected = false;
-    }
-    temp[indx].isSelected = true;
-    setArray(temp);
-  };
+  // const SingleUserClick = (indx) => {
+  //   // alert(indx)
+  //   const temp = [...array];
+  //   for (const element of temp) {
+  //     element.isSelected = false;
+  //   }
+  //   temp[indx].isSelected = true;
+  //   setArray(temp);
+  // };
 
-  function tasklist(id, index) {
+  function tasklist() {
     // e.preventDefault();
     setId(id);
 
@@ -63,7 +63,8 @@ function Dash() {
     var url =
       "https://zrz50ev48l.execute-api.us-west-2.amazonaws.com/usertaskfetch";
     var header = {};
-    var request = '{ "userId": "' + uid + '" }';
+    console.log("id", id);
+    var request = '{ "userId": "' + id + '" }';
     console.log("req" + JSON.stringify(request));
     axios
       .post(url, request, header)
@@ -99,7 +100,7 @@ function Dash() {
 
       .catch((err) => {});
 
-    SingleUserClick(index);
+    // SingleUserClick(index);
   }
   //   function setTaskClick(e, id,index) {
 
@@ -277,20 +278,24 @@ function Dash() {
               <label className="test_sprint">TEST Sprint1</label>
             </div>
             <div className="secondcolumn_row3">
-              <select onChange={(e)=>{setUId(e.target.value)}} >
-              <option>--Select--</option>
-                {array.map((item,index)=>{
-                
-                  return<>
-                    
-                  <option value={item.id}>{item.txtUserName}</option>
-                  {/* <option>Anjaly</option>
+              <select
+                onChange={(e) => {
+                  setId(e.target.value);
+                }}
+                onClick={tasklist}
+              >
+                <option>--Select--</option>
+                {array.map((item, index) => {
+                  return (
+                    <>
+                      <option value={item.id}>{item.txtUserName}</option>
+                      {/* <option>Anjaly</option>
                 <option>Sushmitha</option>
                 <option>Dony</option>
                 <option>Anitha</option> */}
-                  </>
+                    </>
+                  );
                 })}
-                
               </select>
               {/* <div className="secondcolumn_search">
                 <input type="text" className="secondcolumn_row3_text" />
@@ -334,48 +339,54 @@ function Dash() {
                 >
                   <label className="taskbar_label">TO DO</label>
                   <div className="taskbars_task">
-                  <  FaFlag className="flag"/>
-                   <label>Task1</label>
-                   
+                    {firstArray.map((item, index) => {
+                      return (
+                        <>
+                          <FaFlag className="flagtodo" />
+                          <label
+                            draggable="true"
+                            onDragStart={(e) =>
+                              handleDrag(e, index, "taskbar1", item)
+                            }
+                          >
+                            <label className="taskbars_task">
+                              {item.txtTitle}
+                            </label>
+                          </label>
+                        </>
+                      );
+                    })}
                   </div>
-                  {firstArray.map((item, index) => {
-                    return (
-                      <>
-                        <p
-                          draggable="true"
-                          onDragStart={(e) =>
-                            handleDrag(e, index, "taskbar1", item)
-                          }
-                        >
-                          <p className="draggablep">{item.txtTitle}</p>
-                        </p>
-                      </>
-                    );
-                  })}
                 </div>
-
                 <div
                   className="taskbar2"
                   onDragOver={(e) => allowDrop(e)}
                   onDrop={(e) => handleDrop(e)}
                 >
-                  {" "}
+                 
                   <label className="taskbar_label">IN PROGRESS</label>
                   {/* {JSON.stringify(secondArray)} */}
-                  {secondArray.map((item, index) => {
-                    return (
-                      <>
-                        <p
-                          draggable="true"
-                          onDragStart={(e) =>
-                            handleDrag(e, index, "taskbar2", item)
-                          }
-                        >
-                          <p className="draggablep">{item.txtTitle}</p>
-                        </p>
-                      </>
-                    );
-                  })}
+                  <div className="taskbars_task">
+                    {/* <label>Task1</label> */}
+
+                    {secondArray.map((item, index) => {
+                      return (
+                        <>
+                          <FaFlag className="flagprogress" />
+                          <label
+                            draggable="true"
+                            onDragStart={(e) =>
+                              handleDrag(e, index, "taskbar2", item)
+                            }
+                          >
+                            <label className="taskbar_tasks">
+                              {item.txtTitle}
+                            </label>
+                          </label>
+                        </>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 <div
@@ -385,20 +396,25 @@ function Dash() {
                 >
                   <label className="taskbar_label">ON REVIEW</label>
                   {/* {JSON.stringify(thirdArray)} */}
-                  {thirdArray.map((item, index) => {
-                    return (
-                      <>
-                        <p
-                          draggable="true"
-                          onDragStart={(e) =>
-                            handleDrag(e, index, "taskbar3", item)
-                          }
-                        >
-                          <p className="draggablep">{item.txtTitle}</p>
-                        </p>
-                      </>
-                    );
-                  })}
+                  <div className="taskbars_task">
+                    {thirdArray.map((item, index) => {
+                      return (
+                        <>
+                          <FaFlag className="flagreview" />
+                          <label
+                            draggable="true"
+                            onDragStart={(e) =>
+                              handleDrag(e, index, "taskbar3", item)
+                            }
+                          >
+                            <label className="taskbars_task">
+                              {item.txtTitle}
+                            </label>
+                          </label>
+                        </>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 <div
@@ -409,20 +425,25 @@ function Dash() {
                   {" "}
                   <label className="taskbar_label">COMPLETED</label>
                   {/* {JSON.stringify(fourthArray)} */}
-                  {fourthArray.map((item, index) => {
-                    return (
-                      <>
-                        <p
-                          draggable="true"
-                          onDragStart={(e) =>
-                            handleDrag(e, index, "taskbar4", item)
-                          }
-                        >
-                          <p className="draggablep">{item.txtTitle}</p>
-                        </p>
-                      </>
-                    );
-                  })}
+                  <div className="taskbars_task">
+                    {fourthArray.map((item, index) => {
+                      return (
+                        <>
+                          <FaFlag className="flagcomplete" />
+                          <label
+                            draggable="true"
+                            onDragStart={(e) =>
+                              handleDrag(e, index, "taskbar4", item)
+                            }
+                          >
+                            <label className="taskbars_task">
+                              {item.txtTitle}
+                            </label>
+                          </label>
+                        </>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
