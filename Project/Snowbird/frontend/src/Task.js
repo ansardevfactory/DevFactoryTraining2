@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Menu from './Menu'
 import Header from "./Header";
+import {  FaSearch } from "react-icons/fa";
 import {
   BsChevronDown,
   BsStar,
@@ -86,40 +87,40 @@ function Task() {
                     <BsFillCaretDownFill />
                   </div>
                 </th>
-                <th>Type</th>
-                <th>Lead</th>
+                <th>Priority</th>
+                <th>AssignedTo</th>
                 <th></th>
               </tr>
               <tr>
                 <td>
                   <BsStar />
                 </td>
-                <td>SnowBird</td>
-                <td>SB</td>
-                <td>Team mananged software</td>
+                <td>BoardPage</td>
+                <td>Dash</td>
+                <td>High</td>
                 <td>
                   <div className="rowflex">
-                    <div className="circle">S</div>Sunu
+                    <div className="circle">AK</div>Anjaly
                   </div>
                 </td>
                 <td>
-                  <BsThreeDots onClick={editproject}/>
+                  <BsThreeDots onClick={newClick}/>
                 </td>
               </tr>{" "}
               <tr>
                 <td>
                   <BsStar />
                 </td>
-                <td>ECommerce</td>
-                <td>EC</td>
-                <td>Team mananged software</td>
+                <td>SprintList</td>
+                <td>SL</td>
+                <td>High</td>
                 <td>
                   <div className="rowflex">
-                    <div className="circle">AS</div>Ansar
+                    <div className="circle">S</div>Sushmitha
                   </div>
                 </td>
                 <td>
-                  <BsThreeDots onClick={editproject} />
+                  <BsThreeDots onClick={newClick} />
                 </td>
               </tr>{" "}
               </table>
@@ -150,12 +151,12 @@ function Task() {
             </table> */}
           </div>
 
-          <div className="pbutton">
+          {/* <div className="pbutton">
             <button>1</button>
             <button>2</button>
             <button>...</button>
             <button>10</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
