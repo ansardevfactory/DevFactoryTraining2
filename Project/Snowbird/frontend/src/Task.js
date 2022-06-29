@@ -3,7 +3,14 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Menu from './Menu'
-
+import Header from "./Header";
+import {
+  BsChevronDown,
+  BsStar,
+  BsThreeDots,
+  BsStarFill,
+  BsFillCaretDownFill,
+} from "react-icons/bs";
 function Task() {
   const navigate = useNavigate()
   const [taskarray, settaskarray] = useState([])
@@ -39,18 +46,87 @@ function Task() {
           <div className="usericon"> </div>
           <label>User</label>
         </div> */}
+          {<Header />}
         <div className="secondrow">
           {/* Side navigation menu */}
 
-          {<Menu />}
+          <div className="firstcolumn">
+            <Menu />
+          </div>
           {/* Main outline */}
           <div className="secondcolumn">
-            <div className="prowone">
+            {/* <div className="prowone">
               <label>Task</label>
               <button onClick={handleClick}>Add Task</button>
-            </div>
+            </div> */}
 
-            <table >
+              <div className="prowone_prjct">
+              <div className="prowone_prjct_left"><label>Tasks</label></div>
+             <div className="prowone_prjct_right"> <button  onClick={handleClick}>Create New</button></div>
+            </div>
+            <div className="search_project">
+                <div className="search_project_s1">
+                   <input type="text"/>
+                  <FaSearch className=""/>
+                  </div>
+
+                  <div className="search_project_s2">
+
+                  </div>
+                  <div className="row3">
+            <table>
+              <tr>
+                <th>
+                  <BsStarFill />
+                </th>
+                <th>Name</th>
+                <th>
+                  <div className="rowflex">
+                    Key
+                    <BsFillCaretDownFill />
+                  </div>
+                </th>
+                <th>Type</th>
+                <th>Lead</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>
+                  <BsStar />
+                </td>
+                <td>SnowBird</td>
+                <td>SB</td>
+                <td>Team mananged software</td>
+                <td>
+                  <div className="rowflex">
+                    <div className="circle">S</div>Sunu
+                  </div>
+                </td>
+                <td>
+                  <BsThreeDots onClick={editproject}/>
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <BsStar />
+                </td>
+                <td>ECommerce</td>
+                <td>EC</td>
+                <td>Team mananged software</td>
+                <td>
+                  <div className="rowflex">
+                    <div className="circle">AS</div>Ansar
+                  </div>
+                </td>
+                <td>
+                  <BsThreeDots onClick={editproject} />
+                </td>
+              </tr>{" "}
+              </table>
+          </div>
+              </div>
+
+            {/* <table >
               <tr className="report_third" >
                 <th>#id</th>
                 <th>Task</th>
@@ -71,7 +147,7 @@ function Task() {
                   </>
                 )
               })}
-            </table>
+            </table> */}
           </div>
 
           <div className="pbutton">

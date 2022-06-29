@@ -1,9 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaAngleDown, FaAngleRight } from "react-icons/fa";
+import { FaAngleDown, FaAngleRight, FaSearch } from "react-icons/fa";
 import { ReactSession } from "react-client-session";
 import Menu from "./Menu";
+import Header from "./Header";
+import './style/styles.css';
+import {
+  BsChevronDown,
+  BsStar,
+  BsThreeDots,
+  BsStarFill,
+  BsFillCaretDownFill,
+} from "react-icons/bs";
 function Project() {
   const navigate = useNavigate();
   const [array, setArray] = useState([]);
@@ -68,32 +77,129 @@ function Project() {
           <div className="usericon"> </div>
           <label>User</label>
         </div> */}
+        {<Header />}
         <div className="secondrow">
           {/* Side navigation menu */}
 
-          {<Menu />}
+          <div className="firstcolumn">
+            <Menu />
+          </div>
     
           <div className="secondcolumn">
-            <div className="prowone">
-              <label>Projects</label>
-              <button onClick={createnew}>Create New</button>
+            <div className="prowone_prjct">
+              <div className="prowone_prjct_left"><label>Projects</label></div>
+             <div className="prowone_prjct_right"> <button  onClick={createnew}>Create New</button></div>
             </div>
-            <div className="tablerow">
+            {/* <div className="tablerow"> */}
+              <div className="search_project">
+                <div className="search_project_s1">
+                   <input type="text"/>
+                  <FaSearch className=""/>
+                  </div>
+
+                  <div className="search_project_s2">
+
+                  </div>
+                  <div className="row3">
+            <table>
+              <tr>
+                <th>
+                  <BsStarFill />
+                </th>
+                <th>Name</th>
+                <th>
+                  <div className="rowflex">
+                    Key
+                    <BsFillCaretDownFill />
+                  </div>
+                </th>
+                <th>Type</th>
+                <th>Lead</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>
+                  <BsStar />
+                </td>
+                <td>SnowBird</td>
+                <td>SB</td>
+                <td>Team mananged software</td>
+                <td>
+                  <div className="rowflex">
+                    <div className="circle">S</div>Sunu
+                  </div>
+                </td>
+                <td>
+                  <BsThreeDots onClick={editproject}/>
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <BsStar />
+                </td>
+                <td>ECommerce</td>
+                <td>EC</td>
+                <td>Team mananged software</td>
+                <td>
+                  <div className="rowflex">
+                    <div className="circle">AS</div>Ansar
+                  </div>
+                </td>
+                <td>
+                  <BsThreeDots onClick={editproject} />
+                </td>
+              </tr>{" "}
+              {/* <tr>
+                <td>
+                  <BsStar />
+                </td>
+                <td>My Project</td>
+                <td>MP</td>
+                <td>Team mananged software</td>
+                <td>
+                  <div className="rowflex">
+                    <div className="circle">AK</div>Anjali
+                  </div>
+                </td>
+                <td>
+                  <BsThreeDots />
+                </td>
+              </tr>{" "} */}
+              {/* <tr>
+                <td>
+                  <BsStar />
+                </td>
+                <td>My Project</td>
+                <td>MP</td>
+                <td>Team mananged software</td>
+                <td>
+                  <div className="rowflex">
+                    <div className="circle">AK</div>Anjali
+                  </div>
+                </td>
+                <td>
+                  <BsThreeDots />
+                </td>
+              </tr> */}
+            </table>
+          </div>
+              </div>
               <table>
-                <thead>
+
+                <tr>
+                  <th></th>
+                </tr>
+                {/* <thead>
                   <th className="withborder constant"></th>
                   <th className="withborder constant">#id</th>
                   <th className="withborder">Project name</th>
                   <th className="withborder">Project owner</th>
-                </thead>
+                </thead> */}
 
-                <tbody>
-                  {array.map((item, index) => {
-                    return (
-                      <>
+                {/* ? */}
                         {/* <tr key={item.id}></tr> */}
                         {/* <td className="right constant"></td> */}
-                        <tr className="project"  >
+                        {/* <tr className="project"  >
                           <td>
                             {item.isExpaned ? (
                               <FaAngleDown
@@ -112,8 +218,8 @@ function Project() {
                           <td>{item.txtName}</td>
                           <td>{item.txtUserName}</td>
                           <td></td>
-                          {/* <td>{JSON.stringify(item.epic)}</td>  */}
-                        </tr>
+                          <td>{JSON.stringify(item.epic)}</td>  */}
+                        {/* </tr>
 
                         {item.epic.map((epicitem, epicindex) => {
                           return (
@@ -148,8 +254,8 @@ function Project() {
                                   )}
                                 </td>
 
-                                {/* <td></td> */}
-                                <td className="epic">{epicitem.txtTitle}</td>
+                                <td></td> */}
+                                {/* <td className="epic">{epicitem.txtTitle}</td>
                                 <td className="epic">{epicitem.txtStatus}</td>
                                 <td className="epic"></td>
                               </tr>
@@ -187,17 +293,17 @@ function Project() {
                                             }
                                           />
                                         )}
-                                      </td>
+                                      </td> */}
 
                                       {/* <td></td> */}
-                                      <td className="task">
+                                      {/* <td className="task">
                                         {taskitem.txtTitle}
                                       </td>
                                       <td className="task">
                                         {taskitem.txtStatus}
-                                      </td>
+                                      </td> */}
                                       {/* <td> {JSON.stringify(epicitem.task)}</td> */}
-                                    </tr>
+                                    {/* </tr>
                                   </>
                                 );
                               })}
@@ -207,14 +313,14 @@ function Project() {
                       </>
                     );
                   })}
-                </tbody>
+                </tbody> */}
               </table>
-              <div className="pbutton">
+              {/* <div className="pbutton">
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
           </div>
         </div>
       </div>

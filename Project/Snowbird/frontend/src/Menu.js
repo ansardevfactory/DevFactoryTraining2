@@ -70,7 +70,7 @@ function Menu() {
           <div className="menu_icon_label"><CgBoard className="menu_iconcg" />
           Board</div>
         </li>
-        <li ><div className="menu_icon_label">
+        <li onClick={project}><div className="menu_icon_label">
           <FaProjectDiagram className="menu_icon" /> 
           Projects</div>
         </li>

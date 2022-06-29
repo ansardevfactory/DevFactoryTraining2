@@ -78,7 +78,7 @@ body {
     font-size: 0.9rem;
   }
   .circle {
-    background-color: rgb(254, 55, 0);
+    /* background-color: rgb(254, 55, 0); */
     width: 25px;
     height: 25px;
     border-radius: 50%;
