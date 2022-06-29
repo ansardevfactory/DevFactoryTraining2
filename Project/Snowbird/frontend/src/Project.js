@@ -97,9 +97,7 @@ function Project() {
                   <FaSearch className=""/>
                   </div>
 
-                  <div className="search_project_s2">
-
-                  </div>
+                  
                   <div className="row3">
             <table>
               <tr>

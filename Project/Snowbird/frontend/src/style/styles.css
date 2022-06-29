@@ -444,6 +444,8 @@ body {
 .prowone_right
 {
   width:50%;
+  margin-left: 50%;
+
   
 }
 /* .tablerow table {
@@ -1905,7 +1907,7 @@ color: rgb(54, 151, 225);
   width:20%;
   border:1px solid black;
   margin-left:2%;
-  padding:2%;
+  /* padding:0%; */
   text-align: right;
 }
 
@@ -1913,7 +1915,8 @@ color: rgb(54, 151, 225);
   border: none; 
   outline: none;
  margin-bottom: 1%;
- width:20%
+ width:80%;
+   /* background-color: #0052CC; */
 }
 .search_project_s1_icon
 {
