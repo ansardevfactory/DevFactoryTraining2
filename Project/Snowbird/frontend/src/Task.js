@@ -24,14 +24,15 @@ function Task() {
   }
 
   useEffect(() => {
-    var url = 'http://localhost:8000/fetchtask'
+    //var url = 'http://localhost:8000/fetchtask'
+    var url="https://b2lqp1icc0.execute-api.us-west-2.amazonaws.com/taskfetch_taskpage";
     var request = {}
     var header = {}
 
     axios
       .post(url, request, header)
       .then((res) => {
-        //console.log(res.data)
+        console.log(res.data)
         settaskarray(res.data)
       })
       .catch((err) => {
@@ -80,49 +81,35 @@ function Task() {
                 <th>
                   <BsStarFill />
                 </th>
-                <th>Name</th>
-                <th>
-                  <div className="rowflex">
-                    Key
-                    <BsFillCaretDownFill />
-                  </div>
-                </th>
-                <th>Priority</th>
-                <th>AssignedTo</th>
+                <th style={{fontWeight:"bolder"}}>Task</th>
+                <th style={{fontWeight:"bolder"}}>Epic </th>
+                <th style={{fontWeight:"bolder"}}>Status</th>
+                <th style={{fontWeight:"bolder"}}>AssignedTo</th>
                 <th></th>
               </tr>
-              <tr>
+              {taskarray.map((item,index)=>{
+                return<>
+                <tr>
                 <td>
                   <BsStar />
                 </td>
-                <td>BoardPage</td>
-                <td>Dash</td>
-                <td>High</td>
+                <td>{item.taskname}</td>
+                <td>{item.txtTitle}</td>
+                <td>{item.txtStatus}</td>
+                
                 <td>
                   <div className="rowflex">
-                    <div className="circle">AK</div>Anjaly
+                    <div className="circle">{item.txtUserName.charAt(0)}</div><td>{item.txtUserName}</td>
                   </div>
                 </td>
                 <td>
                   <BsThreeDots onClick={newClick}/>
                 </td>
-              </tr>{" "}
-              <tr>
-                <td>
-                  <BsStar />
-                </td>
-                <td>SprintList</td>
-                <td>SL</td>
-                <td>High</td>
-                <td>
-                  <div className="rowflex">
-                    <div className="circle">S</div>Sushmitha
-                  </div>
-                </td>
-                <td>
-                  <BsThreeDots onClick={newClick} />
-                </td>
-              </tr>{" "}
+              </tr>
+              </>
+              })}
+              
+              
               </table>
           </div>
               </div>
