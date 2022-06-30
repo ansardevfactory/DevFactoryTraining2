@@ -20,9 +20,10 @@ function Project() {
   var login_user = localStorage.getItem("username");
   // alert("loginuser"+login_user);
   //  var url = "http://localhost:8000/projectdetailfetchNew";
-  var url =
-    "https://iivyvr2ukc.execute-api.us-west-2.amazonaws.com/default/projectload";
+  // var url ="https://vrwxcu8r03.execute-api.us-west-2.amazonaws.com/default/projectfetch"
+   // "https://iivyvr2ukc.execute-api.us-west-2.amazonaws.com/default/projectload";
   // var request = { poid: 4 };
+  var url="https://iivyvr2ukc.execute-api.us-west-2.amazonaws.com/default/projectload"
   var request = {};
   var header = {};
   useEffect(() => {
@@ -30,7 +31,7 @@ function Project() {
       .post(url, request, header)
       .then((res) => {
         setArray(res.data);
-        // console.log(res.data);
+        console.log(res.data);
       })
       .catch();
   }, []);
@@ -119,7 +120,7 @@ function Project() {
                     <BsFillCaretDownFill />
                   </div>
                 </th> */}
-                    <th style={{fontWeight:"bolder"}}>Type</th>
+                    <th style={{fontWeight:"bolder",color:"darkgre"}}>Type</th>
                     <th style={{fontWeight:"bolder"}}>Lead</th>
                     <th></th>
                   </tr>
@@ -141,7 +142,7 @@ function Project() {
                           </div>
                           {/* <td></td> */}
                           <td>
-                            <BsThreeDots onClick={editproject} />
+                            <BsThreeDots onClick={()=>{editproject(item.id)} }/>
                           </td>
                         </tr>
                       </>
