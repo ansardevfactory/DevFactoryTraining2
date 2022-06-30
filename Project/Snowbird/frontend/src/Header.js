@@ -17,7 +17,7 @@ import {VscGraph} from "react-icons/vsc"
 function Menu() {
   var navigate = useNavigate();
   const [select, setSelect] = useState(false);
-
+  var login_user=localStorage.getItem("username");
   useEffect(() => {
     localStorage.setItem("select1", true);
     console.log("Select from report", select);
@@ -71,7 +71,8 @@ function Menu() {
         </div>
         
         <div className="usericon">
-          <FaUserCircle className="usericon_icon" />
+        <div className="circle_login">{ login_user.charAt(0)}</div>
+          {/* <FaUserCircle className="usericon_icon" /> */}
           <div className="usericon_label"></div>
           <label></label>
           <div className="popup">

@@ -47,71 +47,92 @@ function AddProject() {
       })
       .catch();
   }
-  return (
-    <div>
-      <div className="outer">
-        {/* USer name with icon */}
-        {/* <div className="firstrow">
-          <div className="usericon"> </div>
-          <label>User</label>
-        </div> */}
-        <div className="secondrow">
-          {/* Side navigation menu */}
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // return (
+  //   <div>
+  //     <div className="outer">
+  //       {/* USer name with icon */}
+  //       {/* <div className="firstrow">
+  //         <div className="usericon"> </div>
+  //         <label>User</label>
+  //       </div> */}
+  //       <div className="secondrow">
+  //         {/* Side navigation menu */}
            
-          {<Menu/>}
+  //         {<Menu/>}
           
-          <div className="secondcolumn">
-            <div className="prowone">
-              <label>Add Project</label>
-              <button onClick={handleclick}>SAVE</button>
-            </div>
+  //         <div className="secondcolumn">
+  //           <div className="prowone">
+  //             <label>Add Project</label>
+  //             <button onClick={handleclick}>SAVE</button>
+  //           </div>
 
-            <div className="psecondrow">
-              <div className="titlerow">
-                <label>Title</label>
-                <br></br>
-                {/* onChange={(e)=>{setTextName(e.target.value)}} */}
-                <input type="text" onChange={(e) => { setTextName(e.target.value) }} />
-              </div>
-              <div className="descriptiion">
-                <label>Description</label>
-                <br></br>
-                {/* <textarea/> */}
-                <input type="text" onChange={(e) => { setDescri(e.target.value) }} />
-              </div>
+  //           <div className="psecondrow">
+  //             <div className="titlerow">
+  //               <label>Title</label>
+  //               <br></br>
+  //               {/* onChange={(e)=>{setTextName(e.target.value)}} */}
+  //               <input type="text" onChange={(e) => { setTextName(e.target.value) }} />
+  //             </div>
+  //             <div className="descriptiion">
+  //               <label>Description</label>
+  //               <br></br>
+  //               {/* <textarea/> */}
+  //               <input type="text" onChange={(e) => { setDescri(e.target.value) }} />
+  //             </div>
 
-              <div className="typerow">
-                <label>Type</label>
-                <br></br>
-                {/* onSelect={(e)=>{setTextType(e.target.value)}} */}
-                <select onChange={(e) => { setTextType(e.target.value) }}>
-                  <option>--options--</option>
-                  <option>Telecom</option>
-                  <option>Business</option>
-                </select>
-              </div>
+  //             <div className="typerow">
+  //               <label>Type</label>
+  //               <br></br>
+  //               {/* onSelect={(e)=>{setTextType(e.target.value)}} */}
+  //               <select onChange={(e) => { setTextType(e.target.value) }}>
+  //                 <option>--options--</option>
+  //                 <option>Telecom</option>
+  //                 <option>Business</option>
+  //               </select>
+  //             </div>
 
-              <div className="ownerrow">
-                <label>Owner</label>
-                <br></br>
-                {/* onSelect={(e)=>{setRefOwner(e.target.value)}} */}
-                <select onChange={(e) => { setRefOwner(e.target.value) }} >
+  //             <div className="ownerrow">
+  //               <label>Owner</label>
+  //               <br></br>
+  //               {/* onSelect={(e)=>{setRefOwner(e.target.value)}} */}
+  //               <select onChange={(e) => { setRefOwner(e.target.value) }} >
                 
-                  {options.map((item, index) => {
-                    return <option value={item.id}>{item.txtUserName}</option>
+  //                 {options.map((item, index) => {
+  //                   return <option value={item.id}>{item.txtUserName}</option>
                     
 
 
-                  })}
+  //                 })}
 
-                </select>
-              </div>
+  //               </select>
+  //             </div>
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 }
 export default AddProject;

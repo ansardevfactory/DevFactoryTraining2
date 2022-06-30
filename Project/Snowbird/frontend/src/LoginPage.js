@@ -12,13 +12,15 @@ function LoginPage() {
   const [errormessage, setErrorMessage] = useState("");
   const [vsble,setVisble]=useState(false)
   const navigate = useNavigate();
-
+  
   function handleclick(e) { 
     e.preventDefault();
     var url = "https://2vlntjkuk1.execute-api.us-west-2.amazonaws.com/uservalidation";
     var req ='{"txtUserName": "'+Username+'", "txtPassword": "'+Password+'"}'
     var header = {};
-
+    var n=Username;
+    console.log(n);
+    localStorage.setItem("username",Username);
     setVisble(true)
     setErrorMessage("")
     axios

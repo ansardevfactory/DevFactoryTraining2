@@ -1920,16 +1920,23 @@ color: rgb(54, 151, 225);
 {
   background-color:white;
   width:20%;
-  border:1px solid black;
+  border:1px solid rgb(154, 150, 150);
   margin-left:2%;
   /* padding:0%; */
   text-align: right;
+  display: inline-block;
+  
 }
-
+.search_project_s1 .search{
+margin-top:3%;
+color:#666;
+/* margin-bottom:0%; */
+}
 .search_project_s1 input{
   border: none; 
   outline: none;
- margin-bottom: 1%;
+ 
+ margin-bottom:1%;
  width:80%;
    /* background-color: #0052CC; */
 }
@@ -2427,6 +2434,19 @@ color: rgb(54, 151, 225);
     margin-top: 60%;
     text-align: right;
      /* margin-left: 380px; */
+  }
+  .circle_login
+  {
+    background-color:#0183CA;;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 2px;
+  color: white;
+  margin-right: 10px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
   }
  
 

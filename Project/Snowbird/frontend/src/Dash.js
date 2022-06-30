@@ -25,6 +25,7 @@ function Dash() {
   const [time, setTime] = useState("");
   const [uid, setUId] = useState("");
   var temp;
+  var login_user=localStorage.getItem("username");
   useEffect(() => {
     var url =
       "https://elvvu6z51m.execute-api.us-west-2.amazonaws.com/userfetch";

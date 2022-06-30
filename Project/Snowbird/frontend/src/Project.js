@@ -17,8 +17,12 @@ function Project() {
   const navigate = useNavigate();
   const [array, setArray] = useState([]);
   const [id, setPrjctId] = useState({});
-  var url = "http://localhost:8000/projectdetailfetchNew";
-  var request = { poid: 4 };
+  var login_user=localStorage.getItem("username");
+  // alert("loginuser"+login_user);
+//  var url = "http://localhost:8000/projectdetailfetchNew";
+  var url="https://iivyvr2ukc.execute-api.us-west-2.amazonaws.com/default/projectload";
+  // var request = { poid: 4 };
+  var request={};
   var header = {};
   useEffect(() => {
     axios
@@ -45,30 +49,30 @@ function Project() {
     navigate("/editproject");
 
   }
-  const handleExpand = (e, item, index) => {
-    e.preventDefault();
-    var temp = [...array];
-    temp[index].isExpaned = temp[index].isExpaned ? false : true;
-    setArray(temp);
-  };
-  const handleChildExpand = (e, item, index, childIndex) => {
-    e.preventDefault();
-    var temp = [...array];
-    temp[index].array[childIndex].isExpaned = temp[index].array[childIndex]
-      .isExpaned
-      ? false
-      : true;
-    setArray(temp);
-  };
-    const handleTaskExpand = (e, item, index,taskindex) => {
-      e.preventDefault();
-      var temp = [...array];
-      temp[index].array[taskindex].isExpaned = temp[index].array[taskindex]
-        .isExpaned
-        ? false
-        : true;
-      setArray(temp);
-    };
+  // const handleExpand = (e, item, index) => {
+  //   e.preventDefault();
+  //   var temp = [...array];
+  //   temp[index].isExpaned = temp[index].isExpaned ? false : true;
+  //   setArray(temp);
+  // };
+  // const handleChildExpand = (e, item, index, childIndex) => {
+  //   e.preventDefault();
+  //   var temp = [...array];
+  //   temp[index].array[childIndex].isExpaned = temp[index].array[childIndex]
+  //     .isExpaned
+  //     ? false
+  //     : true;
+  //   setArray(temp);
+  // };
+  //   const handleTaskExpand = (e, item, index,taskindex) => {
+  //     e.preventDefault();
+  //     var temp = [...array];
+  //     temp[index].array[taskindex].isExpaned = temp[index].array[taskindex]
+  //       .isExpaned
+  //       ? false
+  //       : true;
+  //     setArray(temp);
+  //   };
   return (
     <div>
       <div className="outer">
@@ -94,7 +98,7 @@ function Project() {
               <div className="search_project">
                 <div className="search_project_s1">
                    <input type="text"/>
-                  <FaSearch className=""/>
+                  <FaSearch className="search"/>
                   </div>
 
                   
@@ -105,48 +109,41 @@ function Project() {
                   <BsStarFill />
                 </th>
                 <th>Name</th>
-                <th>
+                {/* <th>
                   <div className="rowflex">
                     Key
                     <BsFillCaretDownFill />
                   </div>
-                </th>
+                </th> */}
                 <th>Type</th>
                 <th>Lead</th>
                 <th></th>
               </tr>
-              <tr>
-                <td>
-                  <BsStar />
-                </td>
-                <td>SnowBird</td>
-                <td>SB</td>
-                <td>Team mananged software</td>
-                <td>
-                  <div className="rowflex">
-                    <div className="circle">S</div>Sunu
+              
+                {array.map((item,index)=>{
+                  return<>
+                  <tr>
+                    <td> <BsStar /> </td>
+                    <td>{item.txtName}</td>
+                    <td>{item.txtType}</td>
+                    <div className="rowflex">
+                    <div className="circle">{ item.txtUserName.charAt(0)}</div>{item.txtUserName}
                   </div>
-                </td>
-                <td>
+                    {/* <td></td> */}
+                    <td>
                   <BsThreeDots onClick={editproject}/>
                 </td>
-              </tr>{" "}
-              <tr>
-                <td>
-                  <BsStar />
-                </td>
-                <td>ECommerce</td>
-                <td>EC</td>
-                <td>Team mananged software</td>
-                <td>
-                  <div className="rowflex">
-                    <div className="circle">AS</div>Ansar
-                  </div>
-                </td>
-                <td>
-                  <BsThreeDots onClick={editproject} />
-                </td>
-              </tr>{" "}
+                </tr>
+                  </>
+                })}
+               
+               
+                
+                
+                
+                
+             {" "}
+            
               {/* <tr>
                 <td>
                   <BsStar />
