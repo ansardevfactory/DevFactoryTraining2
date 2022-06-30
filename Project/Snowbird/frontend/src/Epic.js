@@ -118,7 +118,7 @@ return (
                 </div>
               </td>
               <td>
-                <BsThreeDots onClick={editepic}/>
+                <BsThreeDots onClick={()=>{editepic(item.id)}}/>
               </td>
             </tr>
             </>
