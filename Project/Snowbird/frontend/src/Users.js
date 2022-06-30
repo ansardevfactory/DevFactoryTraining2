@@ -10,18 +10,19 @@ import {TiUser} from 'react-icons/ti';
 import {BsEmojiSmile,BsEmojiSmileFill,BsThreeDots} from 'react-icons/bs'
 
 function Users() {
-    const [array,setArray]=useState([]);
-    const navigate=useNavigate();
-    useEffect(()=>{
-      var url="http://localhost:8000/userfetchforusers";
-    var header={};
-    var request={};
-    axios.post(url,request,header).then((res)=>{
-        console.log(res.data);
-        setArray(res.data);
-    }).catch();
+  const [array,setArray]=useState([]);
+  const navigate=useNavigate();
+  useEffect(()=>{
+   // var url="http://localhost:8000/userfetchforusers";
+   var url=" https://9i5fv8xex0.execute-api.us-west-2.amazonaws.com/userfetch_userPage";
+  var header={};
+  var request={};
+  axios.post(url,request,header).then((res)=>{
+      console.log(res.data);
+      setArray(res.data);
+  }).catch();
 
-    },[])
+  },[])
     
 
 function newuser()
@@ -72,17 +73,34 @@ function newuser()
                 <table>
                   <tr>
                   <th><TiUser className='active'/></th>
-                    
+                  
                     <th>id</th>
                     <th>Name</th>
                     <th>Role</th>
                   </tr>
-                  <tr>
-                    <td><input type="checkbox"/></td>
-                    <td>1</td>
+                  <tbody>
+                
+                {array.map((item,index)=>{
+                   
+                    return<>
+                    <tr>
+                    <td><input type="checkbox" className='checkbox_user'/></td>
+                    <td >{item.id}</td>
+                   <td>{item.txtUserName}</td>
+                    <td>{item.txtUserRole}</td>
+                    <td><BsThreeDots onClick={()=>{edituser(item.id,item.txtUserName)}} className='threedots_user' /></td>
+                    
+                    </tr>
+                    </>
+                   
+                })}
+                 
+                </tbody>
+                  {/* <tr>
+                    
                     <td>Anajaly</td>
                     <td>Employee</td>
-                    <td><BsThreeDots onClick={edituser} className='threedots_user' /></td>
+                    
                   </tr>
                   <tr>
                   <td><input type="checkbox"/></td>
@@ -90,7 +108,7 @@ function newuser()
                     <td>Hari</td>
                     <td>Employee</td>
                     <td><BsThreeDots  onClick={edituser} className='threedots_user'/></td>
-                  </tr>
+                  </tr> */}
                 </table>
 
 

@@ -15,14 +15,17 @@ function EditUser() {
   const[role,setRole]=useState("");
   const [uarray,setUArray]=useState([]);
   var nme=localStorage.getItem("name");
+  const[errmsg,setErrorMsg]=useState("");
+ const[msg,setMsg]=useState("");
   console.log("id"+id);
   useEffect(()=>{
     //alert("hi");
-    var url="http://localhost:8000/userupdatefetch";
+   // var url="http://localhost:8000/userupdatefetch";
+   var url="https://8conoiw19k.execute-api.us-west-2.amazonaws.com/userupdatefetch_userPage";
     var header={};
     setId(id);
     //setUname(nme);
-    var request={id:id};
+    var request='{"id":"'+id+'"}';
   
     axios.post(url,request,header).then((res)=>{
          console.log("res"+JSON.stringify(res.data));
@@ -39,7 +42,8 @@ function EditUser() {
     }).catch();
 
 
-    var url1="http://localhost:8000/userRolefetch";
+   // var url1="http://localhost:8000/userRolefetch";
+   var url1=" https://wu75jb9222.execute-api.us-west-2.amazonaws.com/userrolefetch";
     var req={};
     //console.log("name"+nme)
     var header1={};
@@ -61,25 +65,45 @@ function EditUser() {
   },[])
 
   function edituser(){
-    var url="http://localhost:8000/userupdate";
+   // var url="http://localhost:8000/userupdate";
+   var url="https://20t9ec368d.execute-api.us-west-2.amazonaws.com/userupdate_userPage";
     var header={};
-    var request={username:uname,password:pw,reftype:role,id:uid,suname:nme};
-    console.log("req"+JSON.stringify(request));
-    axios.post(url,request,header).then((res)=>{
-      if(res.data.code=="ER_DUP_ENTRY")
-      {
-        alert("Duplicate entry");
+    var request='{"username":"'+uname+'","password":"'+pw+'","reftype":"'+role+'","id":"'+uid+'","suname":"'+nme+'"}';
+    console.log("req"+request);
+    // axios.post(url,request,header).then((res)=>{
+    //   if(res.data.code=="ER_DUP_ENTRY")
+    //   {
+    //     alert("Duplicate entry");
        
-      }
-      else 
+    //   }
+    //   else 
+    //   {
+    //     alert("User updated !")
+    //   }
+    //   console.log("after update"+JSON.stringify(res.data));
+
+    // }).catch();
+    if(uname && pw && role != "")
+    {
+      axios.post(url,request,header).then((res)=>{
+        if(res.data=="user exists")
       {
-        alert("User updated !")
+      setErrorMsg("Username already in use!! Please try another!!")
       }
-      console.log("after update"+JSON.stringify(res.data));
+      else
+      {
+        setMsg("User updated succesfully!!!")
+        setErrorMsg("");
+      }
+  
+      }).catch();
+    }
+    else{
+    setErrorMsg("All fields are mandatory!!");
+    }
 
-    }).catch();
-
-  }
+    }
+  
   return (
     <div>
        <div className="outer">
@@ -110,24 +134,43 @@ function EditUser() {
             <div className="psecondrow">
               <div className="titlerow1">
                 <div className="titlerow1_label"> <label >User Name  </label></div>
-                <CgAsterisk className="asterik"/><div className="titlerow1_input"> <input type="text" onChange={(e)=>{setUname(e.target.value)}}/></div>
+                <CgAsterisk className="asterik"/>
+                <div className="titlerow1_input">
+                   <input type="text" value={uname} onChange={(e)=>{setUname(e.target.value)}}/></div>
                  
               </div>
 
               <div className="titlerow2">
                 <div className="titlerow2_label"> <label >Password   </label></div>
-                <CgAsterisk className="asterik"/><div className="titlerow2_input"><input type="text" /></div>
+                <CgAsterisk className="asterik"/>
+                <div className="titlerow2_input">
+                  <input type="password" value={pw} onChange={(e)=>{setPw(e.target.value)}} /></div>
                 
               </div>
 
               <div className="titlerow3">
                 <div className="titlerow3_label"> <label >Role   </label></div>
-                <CgAsterisk className="asterik"/><div className="titlerow3_input"><select><option>Employee</option></select></div>
+                <CgAsterisk className="asterik"/>
+                <div className="titlerow3_input">
+                <select  value={role}  onChange={(e)=>{setRole(e.target.value)}}>
+                <option>---select---</option>
+                    {uarray.map((uitem,uindex)=>{
+                           
+                        return<>
+                         
+                         <option value={uitem.id}>{uitem.txtUserRole}</option>
+                       
+                           </>
+                       
+                      })}
+                      </select></div>
                 
               </div>
               <div className="titlerow4">
-                <button className="titlerow4_button">Save</button>
+                <button className="titlerow4_button" onClick={edituser}>Save</button>
               </div>
+              <p className="errmsg">{errmsg}</p>
+              <p className="msg">{msg}</p>
               </div>
             
               </div>

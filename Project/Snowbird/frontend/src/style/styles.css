@@ -404,9 +404,9 @@ body {
 
   font-weight: bold;
   text-align: center;
-  padding-left: 5%;
+  /* padding-left: 2%; */
   font-size: 1.5rem;
-  color: rgba(0, 0, 0, 0.688);
+  color: rgba(46, 44, 44, 0.688);
 }
 .prowfirst
 {
@@ -436,10 +436,17 @@ body {
   
 
 }
+.errmsg
+{
+  color: red;
+  margin-left:20%;
+  display: flex;
+}
 .prowone_left
 {
   width:50%;
-
+  border-left:1%;
+  
 }
 .prowone_right
 {
@@ -494,16 +501,20 @@ body {
   width: 100%;
   padding-top:2%;
   margin-top:2%;
+  
   display: flex;
   flex-direction: row;
   align-content: center;
   /* height: 10vh; */
 }
+
 .titlerow1 input {
+  padding:4%;
   display:inline-block;
   width: 150%;
   margin-left: 10%;
-  border:1px solid rgb(14, 14, 232)
+  border:1px solid rgba(93, 95, 112, 0.845);
+  outline: none;;
   /* height: 5vh; */
 }
 .titlerow1_label {
@@ -523,8 +534,10 @@ body {
 .titlerow2 input {
   display:inline-block;
   width: 150%;
+  padding:4%;
+  outline:none;
   margin-left: 10%;
-  border:1px solid rgb(14, 14, 232);
+  border:1px solid rgba(93, 95, 112, 0.845);
   /* height: 5vh; */
 }
 .titlerow2_label {
@@ -1876,9 +1889,10 @@ color: rgb(54, 151, 225);
 }
 .titlerow3 select {
   display:inline-block;
-  width: 150%;
+  width: 310%;
+  padding:6%;
   margin-left: 20%;
-  border:1px solid rgba(17, 39, 232, 0.888)
+  border:1px solid rgba(93, 95, 112, 0.845);
   /* height: 5vh; */
 }
 .titlerow4
@@ -1893,8 +1907,9 @@ color: rgb(54, 151, 225);
 .titlerow4_button
 {
   margin-left:30%;
-  border:2px solid rgb(16, 16, 115);
-  background-color: rgb(250, 246, 246);
+  color:white;
+  border:none;
+  background-color: rgb(8, 8, 230);
 }
 .search_project
 {
@@ -1965,5 +1980,20 @@ color: rgb(54, 151, 225);
   display: flex;
   align-items: center;
 }
+.checkbox_user input:checked
+{
+  background-color: #6AAB18;
+}
+.msg{
+  color:blue;
+  padding-left:25%;
+
+}
+.titlerow1_input_red input
+{
+  border:2px solid red;
+  
+}
+
 
 
