@@ -1942,10 +1942,10 @@ color:#666;
  width:80%;
    /* background-color: #0052CC; */
 }
-.search_project_s1_icon
+/* .search_project_s1_icon
 {
  
-}
+} */
 .row3 {
   padding: 0 4%;
 }
@@ -2023,11 +2023,14 @@ color:#666;
 .image1 {
   width: 90%;
 }
-.image2 {
+.lbl {
   width: 60%;
   margin-top: 50px;
-  margin-bottom: 10px;
-  margin-left: 6%;
+   margin-left: 1%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+  font-weight: 900;
+  font-style: italic;
+ color:green;
 }
 
 .colmn2 {
@@ -2068,6 +2071,7 @@ color:#666;
   border-color: rgb(115, 199, 250);
   margin-bottom: 30px;
   border-width: 1px;
+  margin-top: 20px;
 }
 .inpuut:focus {
   outline: solid rgb(59, 59, 225);

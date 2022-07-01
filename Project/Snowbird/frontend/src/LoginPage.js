@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import logo_snow from './images/logo_snow.png'
 import dlogo from './images/dlogo.png'
 import left from './images/left.png'
-
+import {FaPiedPiperSquare} from "react-icons/fa";
 function LoginPage() {
   const [Username, setusername] = useState("");
   const [Password, setpassword] = useState("");
@@ -77,7 +77,7 @@ function LoginPage() {
         </div>
         <div className="colmn2">
           <div className="roww1">
-            <img src={logo_snow} className="image2" />
+          <label className="lbl">{<FaPiedPiperSquare />} Snowbird</label>
             <input
               className="inpuut"
               onChange={(e) => {
