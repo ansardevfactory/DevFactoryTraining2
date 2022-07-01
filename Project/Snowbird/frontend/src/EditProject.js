@@ -88,24 +88,24 @@ function EditProject() {
         <div className="outer_row1">
           {/* width:50% */}
           <div className="path"><FcFlashOn/>Test Project/<FcBookmark/>Test-5</div>
-          <div className="closeicon">{/* width:50% */}x</div>
+          <div className="closeicon">{/* width:50% */}X</div>
         </div>
         <div className="outer_row2">
           {/* width:100% */}
           <div className="outer_column1">
             {/* width:60% */}
             <div>
-              <input type="text" className="column1_row1" value={name} onChange={(e) => { setTextName(e.target.value)}} />
+              <input type="text" className="iinput" value={name} onChange={(e) => { setTextName(e.target.value)}} />
               {/* <label className="column1_row1">AddProject</label> */}
             </div>
             <div className="column1_row2">
-              <button1><GrAttachment/>Attach</button1>
-              <button2><AiOutlineApartment/> Add a child issue</button2>
-              <button3><AiOutlineLink/> Link issue</button3>
-              {/* <select className="select">
+              <button className="row2buttons"><GrAttachment/>Attach</button>
+              <button className="row2_1buttons"><AiOutlineApartment/> Add a child issue</button>
+              <button className="row2_2buttons"><AiOutlineLink/> Link issue</button>
+               <select className="sselect">
                 <option value=""></option>
-              </select> */}
-              <button4>...</button4>
+              </select> 
+              <button className="row2_3buttons">...</button>
             </div>
             <div className="column1_row3">
              
@@ -124,10 +124,10 @@ function EditProject() {
             </div>
             <div className="column1_row5">
               <div className="row5">
-                <button5>Show</button5>
-                <button6>All</button6>
-                <button7>Comments</button7>
-                <button8>History</button8>
+                <button className="row5buttons">Show</button>
+                <button className="row5buttons">All</button>
+                <button className="row5buttons">Comments</button>
+                <button className="row5buttons">History</button>
               </div>
 
               <div className="row5_1">
@@ -142,7 +142,7 @@ function EditProject() {
             </div>
             <div className="column1_row7">
               <button  className="row8" onClick={updateproject} >Save</button>
-              <button10 className="row9">Cancel</button10>
+              <button className="row9">Cancel</button>
             </div>
           </div>
           <div className="outer_column2">
@@ -154,11 +154,11 @@ function EditProject() {
             <div className="column2_row2">Details</div>
             <div className="column2_row3">
             <div className="column2_row3_1">
-              <div className="list">Assignee</div>
-              <div className="list">label</div>
-              <div className="list">label</div>
-              <div className="list">label</div>
-              <div className="list">label</div>
+              <div className="listt1">Assignee</div>
+              <div className="listt1">label</div>
+              <div className="listt1">label</div>
+              <div className="listt1">label</div>
+              <div className="listt1">label</div>
             </div>
             <div className="column2_row3_2">
               {/* <div className="list"><HiOutlineUserCircle/>Unassigned</div> */}
@@ -169,10 +169,10 @@ function EditProject() {
                 </>
               })}
                 </select></div>
-              <div className="list">None</div>
-              <div className="list">label</div>
-              <div className="list">label</div>
-              <div className="list">
+              <div className="listt1">None</div>
+              <div className="listt1">label</div>
+              <div className="listt1">label</div>
+              <div className="listt1">
                 <div className="list_A">A</div><div>label</div>
               </div>
             </div>
@@ -181,7 +181,7 @@ function EditProject() {
             <label>created 9 minutes ago</label>
             <label className="cl3row1"><DiAptana/>Configure</label>
             </div>
-            <div className="column3_row2"><label>uploaded 8 minutes ago</label></div>
+            <div ><label className="column3_row1">uploaded 8 minutes ago</label></div>
           </div>
         </div>
       </div>
