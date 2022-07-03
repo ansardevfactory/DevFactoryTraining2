@@ -68,7 +68,7 @@ function Menu() {
         <li onClick={board}>
           {" "}
           <div className="menu_icon_label"><CgBoard className="menu_iconcg" />
-          Board</div>
+          SprintBoard</div>
         </li>
         <li onClick={project}><div className="menu_icon_label">
           <FaProjectDiagram className="menu_icon" /> 
@@ -97,7 +97,7 @@ function Menu() {
         </li>
         <li onClick={sprintboard}><div className="menu_icon_label">
           <FaScroll className="menu_icon" />
-          Scrum Board</div>
+          BackLog</div>
         </li>
         <li onClick={showlist}><div className="menu_icon_label">
           <VscGraph className="menu_icon" />
