@@ -68,7 +68,7 @@ function Menu() {
         <li onClick={board}>
           {" "}
           <div className="menu_icon_label"><CgBoard className="menu_iconcg" />
-          SprintBoard</div>
+          ScrumBoard</div>
         </li>
         <li onClick={project}><div className="menu_icon_label">
           <FaProjectDiagram className="menu_icon" /> 

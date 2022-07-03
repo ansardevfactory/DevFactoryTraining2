@@ -12,92 +12,108 @@ import { FcFlashOn } from 'react-icons/fc'
 import { BiSortDown } from 'react-icons/bi'
 import { GrAttachment } from 'react-icons/gr'
 
-function EditTask() {
-  const [user, setUser] = useState([]);
-  const [sprint, setSprint] = useState([]);
-  const [epic, setEpic] = useState([]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState([]);
-  const [status, setStatus] = useState([]);
-  const [hours, setHours] = useState(" ");
-  const [id,setId]=useState("");
-  const [taskdetail,setTaskDetail]=useState([]);
-  const[username,setUserName]=useState("");
+function EditSprint() {
+  const [options, setOption] = useState([])
+  const [Sprintname, settextSprintname] = useState('')
+  const [Description, setdescription] = useState('')
+  const [Status, setStatus] = useState('')
+  const [assignedto, settxtUserName] = useState([])
+  const [fromdate, setdtActstartdate] = useState('2022-06-30')
+  const [todate, setdtActenddate] = useState()
+  const [array, setArray] = useState([])
+  const [taskarray, settaskarray] = useState([])
+  const [statarray, setstatarray] = useState([
+    { Id: 1, Status: 'To Do' },
+    { Id: 2, Status: 'In Progress' },
+    { Id: 3, Status: 'Review' },
+    { Id: 4, Status: 'Completed' },
+  ])
+  const [sparray, setsparray] = useState([])
+  const navigate = useNavigate()
+  const [Id, setid] = useState('')
+
   useEffect(() => {
-    var tempid = localStorage.getItem('taskid')
-    setId(tempid);
-    var url="http://localhost:8000/taskdetails";
-    var request={id:tempid};
-    console.log(request);
-    var header={};
-    axios
-    .post(url,request,header)
-    .then((res)=>{
-      
-      console.log("aaa"+JSON.stringify(res.data));
-      setTaskDetail(res.data);
+    //localStorage.getItem(Id)
+    var tempid = localStorage.getItem('spid')
+    //console.log(tempid)
+    setid(tempid)
 
-      setTitle(res.data[0].txtTitle);
-      setDescription(res.data[0].txtDescription);
-      setStatus(res.data[0].txtStatus);
-      setUserName(res.data[0].txtUserName);
-      setHours(res.data[0].EstHours);
-      
-      
-    })
-    .catch();
-
-    var url1 = "http://localhost:8000/userfetch";
-    var request1 = {id:tempid};
-    var header1 = {};
+    var url = 'http://localhost:8000/fetchuser'
+    var req = {}
+    var header = {}
     axios
-      .post(url1, request1, header1)
+      .post(url, req, header)
       .then((res) => {
-        console.log(res.data);
-        setUser(res.data);
-        console.log(tempid)
+        setArray(res.data)
       })
-      
-      .catch();
-
-      var url2 = "http://localhost:8000/sprintfetch";
-      var request2 = {id:tempid};
-      var header2 = {};
-      axios
-        .post(url2, request2, header2)
-        .then((res) => {
-          console.log(res.data);
-          setSprint(res.data);
-        })
-        .catch();
-
-        var url3 = "http://localhost:8000/Epiclistfetch";
-    var request3 = {id:tempid};
-    var header3 = {};
+      .catch()
+    
+    var url1 = 'http://localhost:8000/sprintdetails'
+    var req1 = { Id: tempid }
+    var header1 = {}
     axios
-      .post(url3, request3, header3)
+      .post(url1, req1, header1)
       .then((res) => {
-        console.log(res.data);
-        setEpic(res.data);
+        //alert('hi')
+        //console.log(JSON.stringify(req1))
+        console.log('response' + JSON.stringify(res.data))
+       
+        setsparray(res.data)
+
+        settextSprintname(res.data[0].txtSprintname)
+        setdescription(res.data[0].Description)
+        setStatus(res.data[0].Status)
+        settxtUserName(res.data[0].assignedto)
+        setdtActstartdate(res.data[0].dtActstartdate)
+        setdtActenddate(res.data[0].dtActenddate)
+        console.log("hi"+res.data[0].dtActenddate)
       })
-      .catch();
-  }, []);
-
-
-  function handleClick(e) {
-    console.log("hi");
-    var url = "http://localhost:8000/Taskinsert";      
-    var req = {txtTitle:title,txtDescriotion:description,txtStatus:status,refassignee:4,refSprintId:sprint,EstHours:hours};
-    var header = {};
+      .catch()
+      var url2 = 'http://localhost:8000/fetchsprintwisetasklist'
+    var req2 = {Id:tempid}
+    var header2 = {}
     axios
-    .post(url, req, header)
-    .then((res) => {
-      console.log(res.data);
-      setUser(res.data);
-          })
-    .catch();
-        alert('Success')
-};
+      .post(url2, req2, header2)
+      .then((res) => {
+        // console.log(res)
+        settaskarray(res.data)
+      
+      })
+      .catch()
+  }, [])
+
+  function handleclick() {
+    console.log(fromdate)
+    var url = 'http://localhost:8000/updatesprint'
+    var request = {
+      Id: Id,
+      txtSprintname: Sprintname,
+      Description: Description,
+      dtActdate: fromdate,
+      dtActenddate: todate,
+      Status: Status,
+      txtUsername: assignedto,
+    }
+    // console.log(request)
+    var header = {}
+
+    axios
+      .post(url, request, header)
+      .then((res) => {
+        // console.log('result' + JSON.stringify(res.data))
+        if (res.data !== 'undefined') {
+          alert('updated sprint')
+        }
+      })
+      .catch()
+  }
+  function newClick() {
+    navigate('/Task')
+  }
+  function newClick() {
+    navigate('/EditTask')
+   }
+
   return (
 <div>
       <div className="outer">
@@ -123,11 +139,15 @@ function EditTask() {
                 <div>
                   <div className="path">
                     <FcFlashOn />
-                    Test Task/
+                    EditSprint/
                     <FcBookmark />
-                    Test-5
+                    Sprint-5
                   </div>
-                  <input type="text" className="iinput" />
+                  <input type="text" className="iinput" value={Sprintname}
+                onChange={(e) => {
+                  settextSprintname(e.target.value)
+                }}
+ />
                   {/* <label className="column1_row1">AddProject</label> */}
                 </div>
                 <div className="column1_row2">
@@ -153,6 +173,11 @@ function EditTask() {
                     rows="10"
                     cols="200"
                     placeholder="Add a description..."
+                    value={Description}
+                onChange={(e) => {
+                  setdescription(e.target.value)
+                }}
+
                   ></textarea>
                 </div>
                 <div className="column1_row4">
@@ -179,7 +204,7 @@ function EditTask() {
                   </div>
                 </div>
                 <div className="column1_row7">
-                  <button className="row8">Save</button>
+                  <button className="row8" onClick={handleclick}>Save</button>
                   <button className="row9">Cancel</button>
                 </div>
               </div>
@@ -204,7 +229,21 @@ function EditTask() {
                     <div>
                       {' '}
                       <div className="listt">
-                        <select className="project_select"></select>
+                        <select className="project_select"
+                        value={assignedto}
+                        onChange={(e) => {
+                          settxtUserName(e.target.value)
+                        }}
+                      >
+                        {array.map((item, index) => {
+                          return (
+                            <>
+                              <option value={item.txtUserName}>
+                                {item.txtUserName}
+                              </option>
+                            </>
+                          )
+                        })}</select>
                       </div>
                     </div>
                     <div className="listt">None</div>
@@ -236,7 +275,7 @@ function EditTask() {
     </div>
   )
 }
-export default EditTask
+export default EditSprint
 
 
 
