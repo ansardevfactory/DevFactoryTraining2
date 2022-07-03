@@ -11,9 +11,9 @@ import Project from "./Project";
 import AddUser from "./AddUser";
 import Users from "./Users";
 import Menu from "./Menu";
-
+import EditSprint from "./EditSprint";
 import SprintBoard from "./SprintBoard";
-
+import AddSprint from "./AddSprint";
 import Attendance from "./Attendance";
 import Task from "./Task";
 import AddTask from "./AddTask";
@@ -62,6 +62,9 @@ function Navigation() {
           <Route path="/edittask" element={<EditTask/>}></Route>
           <Route path="/sprint" element={<Sprint/>}></Route>
           <Route path="/jiralist" element={<JiraList/>}></Route>
+          <Route path="/editsprint" element={<EditSprint />}></Route>
+          <Route path="/addsprint" element={<AddSprint />}></Route>
+ 
         </Routes>
       </BrowserRouter>
     </div>

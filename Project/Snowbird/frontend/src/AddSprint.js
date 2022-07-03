@@ -12,7 +12,7 @@ import { FcFlashOn } from 'react-icons/fc'
 import { BiSortDown } from 'react-icons/bi'
 import { GrAttachment } from 'react-icons/gr'
 
-function AddTask() {
+function AddSprint() {
   const [user, setUser] = useState([])
   const [sprint, setSprint] = useState([])
   const [epic, setEpic] = useState([])
@@ -215,4 +215,4 @@ function AddTask() {
     </div>
   )
 }
-export default AddTask
+export default AddSprint
