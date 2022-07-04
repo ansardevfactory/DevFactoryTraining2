@@ -20,6 +20,7 @@ function AddSprint() {
   const [description, setDescription] = useState([])
   const [status, setStatus] = useState([])
   const [hours, setHours] = useState(' ')
+  const [options, setOption] = useState([])
   useEffect(() => {
     var url = 'http://localhost:8000/userfetch'
     var request = {}
@@ -56,7 +57,7 @@ function AddSprint() {
       })
       .catch()
   }, [])
-  function handleClick(e) {
+  function handleClick() {
     console.log('hi')
     var url = 'http://localhost:8000/Taskinsert'
     var req = {
@@ -139,7 +140,7 @@ function AddSprint() {
                     cols="200"
                     placeholder="Add a description..."
                     onChange={(e) => {
-                      setDescri(e.target.value)
+                      setDescription(e.target.value)
                     }}
                   ></textarea>
                 </div>
@@ -167,7 +168,7 @@ function AddSprint() {
                   </div>
                 </div>
                 <div className="column1_row7">
-                  <button className="row8" onClick={handleClick(e)}>
+                  <button className="row8" onClick={handleClick}>
                     Save
                   </button>
                   <button className="row9">Cancel</button>
