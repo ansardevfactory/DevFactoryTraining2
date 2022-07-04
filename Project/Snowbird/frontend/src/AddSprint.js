@@ -102,11 +102,17 @@ function AddSprint() {
                 <div>
                   <div className="path">
                     <FcFlashOn />
-                    Test Task/
+                    AddSprint/
                     <FcBookmark />
                     Test-5
                   </div>
-                  <input type="text" className="iinput" />
+                  <input
+                    type="text"
+                    className="iinput"
+                    onChange={(e) => {
+                      setSprint(e.target.value)
+                    }}
+                  />
                   {/* <label className="column1_row1">AddProject</label> */}
                 </div>
                 <div className="column1_row2">
@@ -132,6 +138,9 @@ function AddSprint() {
                     rows="10"
                     cols="200"
                     placeholder="Add a description..."
+                    onChange={(e) => {
+                      setDescri(e.target.value)
+                    }}
                   ></textarea>
                 </div>
                 <div className="column1_row4">
@@ -158,7 +167,9 @@ function AddSprint() {
                   </div>
                 </div>
                 <div className="column1_row7">
-                  <button className="row8">Save</button>
+                  <button className="row8" onClick={handleClick(e)}>
+                    Save
+                  </button>
                   <button className="row9">Cancel</button>
                 </div>
               </div>
@@ -183,7 +194,17 @@ function AddSprint() {
                     <div>
                       {' '}
                       <div className="listt">
-                        <select className="project_select"></select>
+                        <select className="project_select">
+                          {options.map((item, index) => {
+                            return (
+                              <>
+                                <option value={item.id}>
+                                  {item.txtUserName}
+                                </option>
+                              </>
+                            )
+                          })}
+                        </select>
                       </div>
                     </div>
                     <div className="listt">None</div>
