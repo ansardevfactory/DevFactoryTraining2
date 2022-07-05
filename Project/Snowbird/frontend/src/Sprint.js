@@ -24,15 +24,17 @@ function Sprint() {
   //   { Id: 3, name: 'sprint3', count },
   //   { Id: 4, name: 'sprint4', count },
   //   { Id: 5, name: 'sprint5', count },
-  function handleClick() {
-    navigate('/AddSprint')
-  }
+  // function handleClick() {
+    // navigate('/AddSprint')
+  // }
   function newClick(e,Id) {
     localStorage.setItem('spid',Id)
+    console.log(Id)
    navigate('/EditSprint')
   }
   useEffect(() => {
-    var url = 'http://localhost:8000/fetchsprintlist'
+    // var url = 'http://localhost:8000/fetchsprintlist'
+    var url = "https://3pouusa736.execute-api.us-west-2.amazonaws.com/fetchsprintlist"
     var request = {}
     var header = {}
 
@@ -46,6 +48,7 @@ function Sprint() {
         console.log(err)
       })
   }, [])
+  
 
   return (
     <div>
@@ -71,7 +74,7 @@ function Sprint() {
 
               <div className="prowone_prjct">
               <div className="prowone_prjct_left"><label>Sprints</label></div>
-             <div className="prowone_prjct_right"> <button  onClick={handleClick}>Create New</button></div>
+             {/* <div className="prowone_prjct_right"> <button  onClick={handleClick}>Create New</button></div> */}
             </div>
             <div className="search_project">
                 <div className="search_project_s1">
@@ -93,27 +96,21 @@ function Sprint() {
                 <th style={{fontWeight:"bolder"}}>StartDt</th>
                 <th style={{fontWeight:"bolder"}}>EndDt</th>
                 <th></th>
-              </tr>
-              {sprintarray.map((item,index)=>{
-                return<>
-                <tr onClick={newClick}>
-                <td>
-                  <BsStar />
-                </td>
-                <td>{item.txtSprintName}</td>             
-                <td>
-                  <div className="rowflex">
-                    <div className="circle">{item.txtUserName.charAt(0)}</div><td>{item.txtUserName}</td>
-                  </div>
-                </td>
-                <td>{item.dtActStartDate}</td>
-                <td>{item.dtActEndDate}</td>
-   
-                {/* <td>
-                  <BsThreeDots />
-                </td> */}
-              </tr>
+                </tr>
+              {sprintarray.map((item, index) => {
+                return (
+                  <>
+                    <tr onClick={(e)=>newClick(e,item.Id)}>
+                      <td className="tbdata">{item.Id}</td>
+                      <td>{item.txtSprintname}</td>
+                      <td>{item.txtUserName}</td>
+                      <td>{item.dtActstartdate}</td>
+                      <td>{item.dtActenddate}</td>
+                    </tr>
+                
+              
               </>
+              )
               })}
               
               

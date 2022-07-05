@@ -3,6 +3,15 @@ import axios from "axios";
 import { useNavigate } from "react";
 //import "./styles/SnowBirdStyle.css";
 import Menu from './Menu'
+import Header from './Header'
+import { DiAptana } from 'react-icons/di'
+import { AiOutlineApartment } from 'react-icons/ai'
+import { AiOutlineLink } from 'react-icons/ai'
+import { FcBookmark } from 'react-icons/fc'
+import { FcFlashOn } from 'react-icons/fc'
+import { BiSortDown } from 'react-icons/bi'
+import { GrAttachment } from 'react-icons/gr'
+
 function AddEpic() {
   const [user, setUser] = useState([]);
   const [title, setTitle] = useState("");
@@ -45,6 +54,7 @@ function AddEpic() {
           <div className="usericon"> </div>
           <label>User</label>
         </div> */}
+        {<Header />}
         <div className="secondrow">
           {/* Side navigation menu */}
 

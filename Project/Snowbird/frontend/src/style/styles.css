@@ -466,11 +466,13 @@ margin-right: 80px;
 {
   width: 50%;
   padding-left:0%;
+  margin-bottom: 15px;
+  margin-left: 6px;
 }
 .prowone_prjct_left label{
   font-size: 2rem;
     color: rgba(0, 0, 0, 0.688);
-    
+  margin-left: 5%;  
 }
 .prowone_prjct_right
 {
@@ -621,11 +623,12 @@ margin-right: 80px;
 }
 .titlerow1 input {
   display:inline-block;
-  width: 150%;
+  width: 113%;
   margin-left: 10%;
-  border:1px solid rgb(14, 14, 232)
+  padding:6px;
+  border:1px solid rgb(14, 14, 232);
   /* height: 5vh; */
-}
+  }
 .titlerow1_label {
   color: gray;
   
@@ -642,8 +645,9 @@ margin-right: 80px;
 }
 .titlerow2 input {
   display:inline-block;
-  width: 150%;
+  width: 113%;
   margin-left: 10%;
+  padding:6px;
   border:1px solid rgb(14, 14, 232);
   /* height: 5vh; */
 }
@@ -1996,8 +2000,9 @@ color: rgb(54, 151, 225);
 }
 .titlerow3 select {
   display:inline-block;
-  width: 150%;
+  width: 220%;
   margin-left: 20%;
+  padding:6px;
   border:1px solid rgba(17, 39, 232, 0.888)
   /* height: 5vh; */
 }
@@ -2012,9 +2017,19 @@ color: rgb(54, 151, 225);
 }
 .titlerow4_button
 {
-  margin-left:30%;
-  border:2px solid rgb(16, 16, 115);
-  background-color: rgb(250, 246, 246);
+  text-align: center;
+  background-color: rgb(202, 209, 216);
+  width: 100px;
+  padding: 5px;
+  font-size: smaller;
+  color: black;
+  margin-bottom: 3%;
+  margin-right: 2%;
+  border:none;
+  margin-left:36%;
+  margin-top: 15px;
+  /* border:2px solid rgb(16, 16, 115); */
+  /* background-color: rgb(250, 246, 246); */
 }
 .search_project
 {
@@ -2028,11 +2043,12 @@ color: rgb(54, 151, 225);
   background-color:white;
   width:20%;
   border:1px solid black;
-  margin-left:2%;
+  margin-left:5%;
   /* padding:0%; */
   text-align: right;
   padding:0.5%;
-  padding-right:1.5% ;
+  padding-right:0.2% ;
+  margin-bottom: 10px;
 }
 
 .search_project_s1 input{
