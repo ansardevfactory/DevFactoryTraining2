@@ -1520,6 +1520,9 @@ input:checked + .slider:before {
 .taskbars_task label{
   font-family: sans-serif;
   font-size: .8rem;
+  color:black;
+  font-weight: bold;
+
 }
 .flag{
 
@@ -2478,6 +2481,28 @@ margin-left:0.1%;
    display: flex;
    align-items: center;
    }
+   .tasktodo
+  {
+    width: 100%;
+    background-color: #fb1515;
+    color:white;
+  }
+ .taskinprogress
+ {
+  width:100%;
+  background-color: rgb(10, 10, 235);
   
+ }
+.taskreview
+{
+  width:100%;
+  background-color:rgb(182, 182, 34);
+}
+.taskcompleted
+{
+  width:100%;
+  background-color:rgb(11, 220, 31);
+}
+
  
 

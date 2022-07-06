@@ -26,22 +26,26 @@ function Dash() {
   const [uid, setUId] = useState("");
   var temp;
   var login_user=localStorage.getItem("username");
-  useEffect(() => {
-    var url =
-      "https://elvvu6z51m.execute-api.us-west-2.amazonaws.com/userfetch";
-    var request = {};
-    var header = {};
-    axios
-      .post(url, request, header)
-      .then((res) => {
-        for (const element of res.data) {
-          element.isSelected = true;
-          setArray(res.data);
-        }
-        console.log("array" + JSON.stringify(res.data));
-      })
-      .catch();
-  }, []);
+  var user_id=localStorage.getItem("id");
+  // console.log("userisd",user_id);
+ // setId(user_id);
+  
+  // useEffect(() => {
+  //   var url =
+  //     "https://elvvu6z51m.execute-api.us-west-2.amazonaws.com/userfetch";
+  //   var request = {};
+  //   var header = {};
+  //   axios
+  //     .post(url, request, header)
+  //     .then((res) => {
+  //       for (const element of res.data) {
+  //         element.isSelected = true;
+  //         setArray(res.data);
+  //       }
+  //       console.log("array" + JSON.stringify(res.data));
+  //     })
+  //     .catch();
+  // }, []);
 
   // const SingleUserClick = (indx) => {
   //   // alert(indx)
@@ -53,10 +57,11 @@ function Dash() {
   //   setArray(temp);
   // };
 
-  function tasklist() {
+  //  function tasklist() {
     // e.preventDefault();
-    setId(id);
-
+   useEffect(()=>{
+     setId(user_id);
+     console.log("usestate id",id);
     setFirstArray([]);
     setSecondArray([]);
     setThirdArray([]);
@@ -65,7 +70,7 @@ function Dash() {
       "https://zrz50ev48l.execute-api.us-west-2.amazonaws.com/usertaskfetch";
     var header = {};
     console.log("id", id);
-    var request = '{ "userId": "' + id + '" }';
+    var request = '{ "userId": "' + user_id + '" }';
     console.log("req" + JSON.stringify(request));
     axios
       .post(url, request, header)
@@ -85,7 +90,7 @@ function Dash() {
             var bc = [...secondArray];
             setSecondArray([bc, element]);
             console.log("here2" + bc);
-          } else if (element.txtStatus == "Review") {
+          } else if (element.txtStatus == "review") {
             var cd = [...thirdArray];
             setThirdArray([cd, element]);
             console.log("here3" + cd);
@@ -100,9 +105,12 @@ function Dash() {
       })
 
       .catch((err) => {});
+    // }
+  },[])
+   
 
     // SingleUserClick(index);
-  }
+  
   //   function setTaskClick(e, id,index) {
 
   //     e.preventDefault();
@@ -171,7 +179,7 @@ function Dash() {
     if (target == "taskbar3") {
       //var s="Review"
       // setStatus("Review");
-      var status = "Review";
+      var status = "review";
       setStatus(status);
     }
     if (target == "taskbar4") {
@@ -279,7 +287,7 @@ function Dash() {
               <label className="test_sprint">TEST Sprint1</label>
             </div>
             <div className="secondcolumn_row3">
-              <select
+              {/* <select
                 onChange={(e) => {
                   setId(e.target.value);
                 }}
@@ -288,16 +296,16 @@ function Dash() {
                 <option>--Select--</option>
                 {array.map((item, index) => {
                   return (
-                    <>
-                      <option value={item.id}>{item.txtUserName}</option>
+                    <> */}
+                      {/* <option value={item.id}>{item.txtUserName}</option> */}
                       {/* <option>Anjaly</option>
                 <option>Sushmitha</option>
                 <option>Dony</option>
                 <option>Anitha</option> */}
-                    </>
+                    {/* </>
                   );
                 })}
-              </select>
+              </select> */}
               {/* <div className="secondcolumn_search">
                 <input type="text" className="secondcolumn_row3_text" />
                 <FaSearch className="fasearch" />
@@ -338,18 +346,19 @@ function Dash() {
                   onDragOver={(e) => allowDrop(e)}
                   onDrop={(e) => handleDrop(e)}
                 >
-                  <label className="taskbar_label">TO DO</label>
+                  <div className="tasktodo">
+                  <label className="taskbar_label">TO DO</label></div>
                   <div className="taskbars_task">
                     {firstArray.map((item, index) => {
                       return (
                         <>
-                          <FaFlag className="flagtodo" />
+                          {/* <FaFlag className="flagtodo" /> */}
                           <label
                             draggable="true"
                             onDragStart={(e) =>
                               handleDrag(e, index, "taskbar1", item)
                             }
-                          >
+                           >
                             <label className="taskbars_task">
                               {item.txtTitle}
                             </label>
@@ -364,29 +373,30 @@ function Dash() {
                   onDragOver={(e) => allowDrop(e)}
                   onDrop={(e) => handleDrop(e)}
                 >
-                 
-                  <label className="taskbar_label">IN PROGRESS</label>
+                 <div className="taskinprogress">
+                  <label className="taskbar_label">IN PROGRESS</label></div>
                   {/* {JSON.stringify(secondArray)} */}
                   <div className="taskbars_task">
                     {/* <label>Task1</label> */}
 
                     {secondArray.map((item, index) => {
-                      return (
+                       return (
                         <>
-                          <FaFlag className="flagprogress" />
+                          {/* <FaFlag className="flagtodo" /> */}
                           <label
                             draggable="true"
                             onDragStart={(e) =>
                               handleDrag(e, index, "taskbar2", item)
                             }
-                          >
-                            <label className="taskbar_tasks">
+                           >
+                            <label className="taskbars_task">
                               {item.txtTitle}
                             </label>
                           </label>
                         </>
                       );
                     })}
+
                   </div>
                 </div>
 
@@ -395,13 +405,14 @@ function Dash() {
                   onDragOver={(e) => allowDrop(e)}
                   onDrop={(e) => handleDrop(e)}
                 >
-                  <label className="taskbar_label">ON REVIEW</label>
+                  <div className="taskreview">
+                  <label className="taskbar_label">ON REVIEW</label></div>
                   {/* {JSON.stringify(thirdArray)} */}
                   <div className="taskbars_task">
                     {thirdArray.map((item, index) => {
                       return (
                         <>
-                          <FaFlag className="flagreview" />
+                          {/* <FaFlag className="flagreview" /> */}
                           <label
                             draggable="true"
                             onDragStart={(e) =>
@@ -424,13 +435,14 @@ function Dash() {
                   onDrop={(e) => handleDrop(e)}
                 >
                   {" "}
-                  <label className="taskbar_label">COMPLETED</label>
+                  <div className="taskcompleted">
+                  <label className="taskbar_label">COMPLETED</label></div>
                   {/* {JSON.stringify(fourthArray)} */}
                   <div className="taskbars_task">
                     {fourthArray.map((item, index) => {
                       return (
                         <>
-                          <FaFlag className="flagcomplete" />
+                          {/* <FaFlag className="flagcomplete" /> */}
                           <label
                             draggable="true"
                             onDragStart={(e) =>
