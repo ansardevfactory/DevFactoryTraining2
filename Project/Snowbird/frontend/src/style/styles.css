@@ -1188,7 +1188,8 @@ input:checked + .slider:before {
 .assignuser {
   width: 100%;
   height: 10vh;
-  margin-left: 12%;
+  margin-left: 2%;
+  padding-bottom: 12px;
 }
 .assignuser select {
   width: 70%;

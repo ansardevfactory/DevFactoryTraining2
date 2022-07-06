@@ -4,6 +4,7 @@ import { useNavigate } from 'react'
 // import "./styles/SnowBirdStyle.css";
 import './style/styles.css'
 import Menu from './Menu'
+import Header from './Header'
 import { DiAptana } from 'react-icons/di'
 import { AiOutlineApartment } from 'react-icons/ai'
 import { AiOutlineLink } from 'react-icons/ai'
@@ -56,25 +57,37 @@ function EditEpic() {
     alert('Success')
   }
   return (
-    <>
+    
       <div>
-        <div className="outter">
+        <div className="outer">
           {/* width:100% */}
-          <div className="outer_row1">
+          {<Header />}
+          <div className="secondrow">
             {/* width:50% */}
-            <div className="path">
-              <FcFlashOn />
-              Epic/
-              <FcBookmark />
-              Test-5
-            </div>
-            <div className="closeicon">{/* width:50% */}X</div>
+            <div className="firstcolumn">
+            <Menu />
           </div>
+            {/* <div className="path"> */}
+              {/* <FcFlashOn /> */}
+              {/* Epic/ */}
+              {/* <FcBookmark /> */}
+              {/* Test-5 */}
+            {/* </div> */}
+            {/* <div className="closeicon">width:50%X</div> */}
+          {/* </div> */}
+          <div className="Seconddcolumn">
           <div className="outer_row2">
-            {/* width:100% */}
+          {/* width:100% */}
             <div className="outer_column1">
               {/* width:60% */}
               <div>
+              <div className="path">
+                    <FcFlashOn />
+                    EditProject/
+                    <FcBookmark />
+                    Project-5
+                  </div>
+
                 <input type="text" className="iinput" />
                 {/* <label className="column1_row1">AddProject</label> */}
               </div>
@@ -135,6 +148,7 @@ function EditEpic() {
             </div>
             <div className="outer_column2">
               <div className="column2_row1">
+              <div className="closeicon">X</div>
                 <select className="select1">
                   <option value="To Do">To Do</option>
                 </select>
@@ -150,7 +164,8 @@ function EditEpic() {
                 </div>
                 <div className="column2_row3_2">
                   {/* <div className="list"><HiOutlineUserCircle/>Unassigned</div> */}
-                  <div>
+                  <div> 
+                  <div className="listt">
                     <select className="project_select">
                       {user.map((item, index) => {
                         return (
@@ -160,6 +175,7 @@ function EditEpic() {
                         )
                       })}
                     </select>
+                  </div>
                   </div>
                   <div className="listt1">None</div>
                   <div className="listt1">label</div>
@@ -184,7 +200,8 @@ function EditEpic() {
           </div>
         </div>
       </div>
-    </>
+    </div>
+    </div>
   )
 }
 export default EditEpic
