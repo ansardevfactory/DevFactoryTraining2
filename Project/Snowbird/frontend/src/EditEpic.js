@@ -165,7 +165,7 @@ function EditEpic() {
                 <div className="column2_row3_2">
                   {/* <div className="list"><HiOutlineUserCircle/>Unassigned</div> */}
                   <div> 
-                  <div className="listt">
+                  <div className="listt1">
                     <select className="project_select">
                       {user.map((item, index) => {
                         return (

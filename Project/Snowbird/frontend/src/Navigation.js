@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dash from "./Dash";
 import Report from "./Report";
 import AddProject from "./AddProject";
-
+import Summarypage from "./Summarypage";
 import EditProject from "./EditProject";
 import Epic from "./Epic";
 import EditUser from "./EditUser";
@@ -36,9 +36,9 @@ function Navigation() {
           <Route path="/report" element={<Report />}>
             {" "}
           </Route>
-          {/* <Route path="/attendance " element={<Attendance  />}>
+           <Route path="/Summarypage" element={<Summarypage />}>
             {" "}
-          </Route> */}
+          </Route> 
           <Route path="/project" element={<Project />}>
             {" "}
           </Route>
@@ -64,6 +64,7 @@ function Navigation() {
           <Route path="/jiralist" element={<JiraList/>}></Route>
           <Route path="/editsprint" element={<EditSprint />}></Route>
           <Route path="/addsprint" element={<AddSprint />}></Route>
+          
  
         </Routes>
       </BrowserRouter>
