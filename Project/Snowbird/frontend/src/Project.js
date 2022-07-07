@@ -17,6 +17,7 @@ function Project() {
   const navigate = useNavigate();
   const [array, setArray] = useState([]);
   const [id, setPrjctId] = useState({});
+  const [search,setSearch]=useState([]);
   var login_user = localStorage.getItem("username");
   // alert("loginuser"+login_user);
   //  var url = "http://localhost:8000/projectdetailfetchNew";
@@ -49,6 +50,17 @@ function Project() {
 
     //console.log("index"+JSON.stringify(index));
     navigate("/editproject");
+  }
+  function searchproject()
+  {
+    var request='{"search":"'+search+'"}';
+     var url="https://gbal56d010.execute-api.us-west-2.amazonaws.com/default/projectsearch";
+     
+     var header={};
+     axios.post(url,request,header).then((res)=>{
+      console.log(res.data);
+     }).catch()
+     alert('searched');
   }
   // const handleExpand = (e, item, index) => {
   //   e.preventDefault();
@@ -102,9 +114,10 @@ function Project() {
             </div>
             {/* <div className="tablerow"> */}
             <div className="search_project">
-              <div className="search_project_s1">
-                <input type="text" />
-                <FaSearch className="search" />
+            <div className="search_project_s1">
+              <input type="text"  onChange={(e)=>{setSearch(e.target.value)}}/>
+                <FaSearch className="search" onClick={searchproject} />
+                
               </div>
              </div>
               <div className="row3">
