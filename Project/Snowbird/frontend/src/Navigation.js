@@ -23,6 +23,7 @@ import EditTask from "./EditTask";
 import LoginPage from "./LoginPage";
 import Sprint from "./Sprint";
 import JiraList from "./JiraList";
+import Velocitychart from "./Velocitychart";
 // import Attendance1 from "./Attendance1";
 
 function Navigation() {
@@ -64,6 +65,7 @@ function Navigation() {
           <Route path="/jiralist" element={<JiraList/>}></Route>
           <Route path="/editsprint" element={<EditSprint />}></Route>
           <Route path="/addsprint" element={<AddSprint />}></Route>
+          <Route path="/Velocitychart" element={<Velocitychart/>}></Route>
           
  
         </Routes>
