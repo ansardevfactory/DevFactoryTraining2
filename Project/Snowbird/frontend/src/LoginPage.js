@@ -14,7 +14,7 @@ function LoginPage() {
   const navigate = useNavigate()
 
   function handleclick(e) {
-    e.preventDefault()
+  e.preventDefault()
     var url =
       'https://2vlntjkuk1.execute-api.us-west-2.amazonaws.com/uservalidation'
     var req =

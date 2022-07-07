@@ -5,6 +5,11 @@ import { FaAngleDown, FaAngleRight, FaSearch } from 'react-icons/fa'
 import { ReactSession } from 'react-client-session'
 import Menu from './Menu'
 import Header from './Header'
+import App from './App'
+// import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+// ChartJS.register(ArcElement, Tooltip, Legend);
+
 import './style/styles.css'
 
 function Summarypage() {
@@ -17,10 +22,10 @@ function Summarypage() {
           <div className="firstcolumn">
             <Menu />
           </div>
-          <div classname="ssecondcolumnn">
+          <div className="ssecondcolumnn">
             <div className="RRoww1">
               <label className="Namesize">Good morning,</label>
-              <input type="text"></input>
+              <input className="IInput"type="text"></input>
             </div>
             <div className="RRoww2">
               <div className="RRoww2clm1">
@@ -38,52 +43,73 @@ function Summarypage() {
                 <label className="Done">0 created</label>
                 <label className="nDays">in last 7 days</label>
               </div>
-              <div className="RRowwc2lm4">
+              <div className="RRoww2clm4">
                 <icon></icon>
-                <label className="Done">0 due</label>
+                <label className="Done">0 due </label>
                 <label className="nDays">in last 7 days</label>
               </div>
             </div>
             <div className="RRoww3">
               <div className="RRoww3clm1">
                 <div>
-                <label>Status Overview</label>
+                <label className="laabl">Status Overview</label>
                 <textarea className="Describe"></textarea></div>
-                <div className="piedetails">
-                  <div>
+                <div className="pieDesc">
+                  <div className="Pchart"><App/></div>
+                  {/* <div className="pdetail">
                     <div className="box"></div>
                     <label>To Do</label>
-                    <input type="text"></input>
+                    <input className="boxinput" type="text"></input>
                   </div>
-                  <div>
+                  <div className="pdetail">
                     <div className="box"></div>
                     <label>In Progress</label>
-                    <input type="text"></input>
+                    <input className="boxinput" type="text"></input>
                   </div>
-                  <div>
+                  <div className="pdetail">
                     <div className="box"></div>
                     <label>Completed</label>
-                    <input type="text"></input>
-                  </div>
-                  <div>
-                    <label>Total</label>
-                    <input type="text"></input>
-                  </div>
+                    <input className="boxinput" type="text"></input>
+                  </div> */}
+                  {/* <div>
+                    <label className="laabl">Total</label>
+                    <input className="boxinput"type="text"></input>
+                  </div> */}
                 </div>
               </div>
               <div className="RRoww3clm2">
-                <label>Team Workload</label>
-                <textarea></textarea>
+                <label className="laabl">Team Workload</label>
+                <textarea className="Describe" ></textarea>
+                
                 <div className="Workload">
-                  icon<div className="Line1">Assignee</div>
-                  <div className="Line2">Work distribution</div>
-                  <div className="Line3">Count</div>
-                  icon<div className="Line1">Assignee</div>
-                  <div className="Line2">0%</div>
-                  <div className="Line3">Count</div>
-                  icon<div className="Line1">Assignee</div>
-                  <div className="Line2">0%</div>
-                  <div className="Line3">Count</div>
+                  <div  className="linenext">
+                  <div className="Line0">Icon</div>
+                  <div className="Line0">icon</div>
+                  <div className="Line0">icon</div>
+                  <div className="Line0">icon</div>
+                  </div>
+                  <div className="linenext">
+                    <div className="Line1">Assignee</div>
+                    <div className="Line1">Ajay</div>
+                    <div className="Line1">Vandana</div>
+                    <div className="Line1">Vrinda</div></div>
+                  {/* <div className="Line2">Work distribution</div> */}
+                  {/* <div className="Line3">Count</div> */}
+                  {/* <div className="Line1">Assignee</div> */}
+                  <div  className="linenext">
+                    <div className="Line2">Work distribution</div>
+                    <div className="Line2">0%</div>
+                    <div className="Line2">0%</div>
+                    <div className="Line2">0%</div></div>
+                  <div  className="linenext">
+                    <div className="Line3">Count</div>
+                    <div className="Line3">15</div>
+                    <div className="Line3">15</div>
+                    <div className="Line3">15</div>
+                    </div>
+            {/* <div className="Line1">Assignee</div> */}
+                  {/* <div className="Line2">0%</div> */}
+                  {/* <div className="Line3">Count</div> */}
                 </div>
               </div>
             </div>
