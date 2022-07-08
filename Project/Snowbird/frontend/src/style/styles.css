@@ -2521,7 +2521,12 @@ textarea {
   padding: 3.5%;
   padding-bottom: 3.7%;
 }
-
+.Bargraph{
+margin-left:300px;
+margin-top: 20px;
+height: 600px;
+width:600px;
+}
 .graph {
   width: 250px;
   height: 250px;
@@ -2533,11 +2538,14 @@ textarea {
 .legends {
   display: flex;
 }
-.red {
+/* .red {
   width: 20px;
   height: 20px;
   margin-right: 10px;
   background-color: red;
+} */
+.Chartvel{
+  width: 150px;
 }
 .blue {
   width: 20px;
@@ -2599,4 +2607,32 @@ textarea {
   display: flex;
   flex-direction: column;
   margin-right: 10px;
+}
+/* .searchvel{ */
+/* } */
+.search_velchart{
+  margin-top: 20px;
+  margin-left: 280px;
+  padding:5px;
+  display: flex;
+  flex-direction: row;
+}
+.search_velocity{
+  border: none;
+  outline: none;
+  margin-bottom: 1%;
+  width: 80%;
+}
+.Vellabl{
+  font-size: x-large;
+  padding-top: 40px;
+  margin-left: 330px;
+}
+.velicons{
+  /* margin-top: 2px; */
+  text-align: right;
+  padding-left: 685px;
+}
+.secondcolumnvel{
+  width:100%;
 }
