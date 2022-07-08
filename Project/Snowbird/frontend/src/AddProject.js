@@ -1,3 +1,4 @@
+
 import axios from 'axios'
 import { ReactSession } from 'react-client-session'
 import { useEffect, useState } from 'react'
@@ -13,6 +14,7 @@ import { GrAttachment } from 'react-icons/gr'
 import { HiOutlineUserCircle } from 'react-icons/hi'
 import './style/styles.css'
 function AddProject() {
+  
   const [options, setOption] = useState([])
   const [name, setTextName] = useState('')
   const [type, setTextType] = useState('')

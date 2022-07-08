@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react";
+import { useNavigate } from "react"
 //import "./styles/SnowBirdStyle.css";
 import Menu from './Menu'
 import Header from './Header'
